@@ -26,3 +26,20 @@ if (burger && mobileMenu) {
     if (!event.matches) setMenuState(false);
   });
 }
+
+
+const revealItems = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window && revealItems.length) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  revealItems.forEach((item) => io.observe(item));
+} else {
+  revealItems.forEach((item) => item.classList.add('in-view'));
+}
