@@ -20,9 +20,9 @@ body { margin: 0; font-family: "Plus Jakarta Sans", sans-serif; color: var(--tex
 .nav-desktop a { color: var(--text); text-decoration: none; font-weight: 600; }
 .hamburger { display: none; border: 0; background: transparent; cursor: pointer; width: 40px; }
 .hamburger span { display: block; height: 2px; background: var(--text); margin: 6px 0; }
-.nav-mobile { display: none; padding: 8px 4% 16px; border-top: 1px solid var(--line); background: var(--surface); }
+.nav-mobile { max-height: 0; opacity: 0; overflow: hidden; padding: 0 4%; border-top: 0 solid var(--line); background: var(--surface); transform: translateY(-6px); transition: max-height .22s ease, opacity .18s ease, transform .18s ease, padding .18s ease; will-change: max-height, opacity, transform; }
 .nav-mobile a { display: block; padding: 10px 0; color: var(--text); text-decoration: none; font-weight: 600; }
-.nav-mobile.open { display: block; }
+.nav-mobile.open { max-height: 260px; opacity: 1; padding: 8px 4% 16px; border-top-width: 1px; transform: translateY(0); }
 
 .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; align-items: center; padding: 56px 0; }
 .tagline { color: var(--primary-2); font-weight: 700; }

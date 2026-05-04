@@ -2,19 +2,27 @@ const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 const burger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenu = document.getElementById('mobileNav');
+const mq = window.matchMedia('(max-width: 980px)');
+
+const setMenuState = (isOpen) => {
+  burger?.setAttribute('aria-expanded', String(isOpen));
+  mobileMenu?.classList.toggle('open', isOpen);
+};
 
 if (burger && mobileMenu) {
   burger.addEventListener('click', () => {
-    const expanded = burger.getAttribute('aria-expanded') === 'true';
-    burger.setAttribute('aria-expanded', String(!expanded));
-    mobileMenu.classList.toggle('open');
+    const shouldOpen = burger.getAttribute('aria-expanded') !== 'true';
+    requestAnimationFrame(() => setMenuState(shouldOpen));
   });
 
-  mobileMenu.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      burger.setAttribute('aria-expanded', 'false');
-      mobileMenu.classList.remove('open');
-    });
+  mobileMenu.addEventListener('click', (event) => {
+    if (event.target instanceof HTMLAnchorElement) {
+      requestAnimationFrame(() => setMenuState(false));
+    }
+  });
+
+  mq.addEventListener('change', (event) => {
+    if (!event.matches) setMenuState(false);
   });
 }
