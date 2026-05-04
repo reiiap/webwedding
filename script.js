@@ -43,3 +43,17 @@ if ('IntersectionObserver' in window && revealItems.length) {
 } else {
   revealItems.forEach((item) => item.classList.add('in-view'));
 }
+
+
+const campaignList = document.getElementById('campaignList');
+if (campaignList) {
+  fetch('/api/marketing')
+    .then((res) => res.json())
+    .then((data) => {
+      const ideas = [...(data.campaignIdeas || []), ...(data.hooks || [])];
+      campaignList.innerHTML = ideas.map((item) => `<li>${item}</li>`).join('');
+    })
+    .catch(() => {
+      campaignList.innerHTML = '<li>Insight sedang diproses. Silakan hubungi admin untuk strategi terbaru.</li>';
+    });
+}
