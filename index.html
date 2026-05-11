@@ -15,7 +15,6 @@
     <div class="container nav">
       <a class="logo" href="#" aria-label="Serenara Studio home"><span class="logo-mark">S</span><span>Serenara <strong>Studio</strong></span></a>
       <nav class="nav-desktop">
-        <a href="#tema">Tema</a>
         <a href="#fitur">Fitur</a>
         <a href="#harga">Harga</a>
         <a href="#contoh">Contoh</a>
@@ -27,7 +26,6 @@
       </button>
     </div>
     <nav id="mobileNav" class="nav-mobile">
-      <a href="#tema">Tema</a>
       <a href="#fitur">Fitur</a>
       <a href="#harga">Harga</a>
       <a href="#contoh">Contoh</a>
@@ -44,7 +42,7 @@
           <h1>An invitation your guests will remember.</h1>
           <p>Momen pertama dimulai saat tamu membuka undangan. Buat momen kecil itu terasa spesial, elegan, dan berkesan.</p>
           <div class="showcase-actions">
-            <a class="btn" href="#harga">Katalog & Harga</a>
+            <a class="btn" href="#harga">Kategori & Paket</a>
             <a class="btn btn-soft" href="#contoh">Buka Contoh</a>
           </div>
           <div class="feature-strip"><span>Emotion first</span><span>Beauty in details</span><span>Effortless sharing</span></div>
@@ -98,19 +96,6 @@
       </aside>
     </section>
 
-    <section id="tema" class="section container reveal">
-      <div class="section-head">
-        <h2>Template Favorit Client</h2>
-        <a href="#kontak">Minta Demo Tema →</a>
-      </div>
-      <div class="template-grid">
-        <article class="template"><img class="thumb" src="assets/theme-gold.svg" alt="Template Serenara Gold" loading="lazy" /><h3>Serenara Gold</h3><p>Elegan, mewah, cocok wedding premium.</p><span>Rp69.000</span></article>
-        <article class="template"><img class="thumb" src="assets/theme-olive.svg" alt="Template Olive Minimal" loading="lazy" /><h3>Olive Minimal</h3><p>Clean modern untuk branding kekinian.</p><span>Rp59.000</span></article>
-        <article class="template"><img class="thumb" src="assets/theme-java.svg" alt="Template Classic Java" loading="lazy" /><h3>Classic Java</h3><p>Nuansa tradisional + sentuhan modern.</p><span>Rp69.000</span></article>
-        <article class="template"><img class="thumb" src="assets/theme-romance.svg" alt="Template Soft Romance" loading="lazy" /><h3>Soft Romance</h3><p>Palet lembut untuk event intimate.</p><span>Rp79.000</span></article>
-      </div>
-    </section>
-
     <section id="fitur" class="section section-soft reveal">
       <div class="container">
         <h2>Fitur Lengkap untuk Undangan yang Terlihat Profesional</h2>
@@ -138,16 +123,16 @@
         <div class="discount-countdown" data-discount-countdown><div><strong>00</strong><small>Hari</small></div><div><strong>00</strong><small>Jam</small></div><div><strong>00</strong><small>Menit</small></div><div><strong>00</strong><small>Detik</small></div></div>
       </div>
       <div class="category-grid">
-        <article class="category-card" id="paket-basic">
+        <article class="category-card" id="paket-basic" data-category="basic">
           <div class="category-head"><span>Category 01</span><h3>Basic</h3><p>Untuk undangan simpel, cepat jadi, dan tetap elegan.</p></div>
           <div class="package-list">
             <div class="package-item promo"><b>Basic Lite</b><p><del>Rp120.000</del><strong>Rp75.000</strong></p><ul><li>Cover + nama tamu</li><li>Detail acara</li><li>Google Maps</li></ul></div>
             <div class="package-item"><b>Basic Plus</b><p><del>Rp150.000</del><strong>Rp99.000</strong></p><ul><li>Semua Basic Lite</li><li>RSVP sederhana</li><li>Ucapan tamu</li></ul></div>
             <div class="package-item"><b>Basic Complete</b><p><del>Rp190.000</del><strong>Rp129.000</strong></p><ul><li>Semua Basic Plus</li><li>Countdown acara</li><li>1x revisi minor</li></ul></div>
           </div>
-          <a class="btn btn-soft plan-btn" href="#contoh-basic">Lihat Contoh Basic</a>
+          <div class="nested-template"><span>Template termasuk</span><div><b>Serenara Clean</b><small>Minimal, cepat, fokus info acara</small></div><div><b>Classic Noir</b><small>Hitam elegan dengan aksen gold</small></div></div><a class="btn btn-soft plan-btn" href="#contoh-basic">Lihat Contoh Basic</a>
         </article>
-        <article class="category-card featured" id="paket-signature">
+        <article class="category-card featured" id="paket-signature" data-category="signature">
           <p class="badge">Paling Laris</p>
           <div class="category-head"><span>Category 02</span><h3>Signature</h3><p>Untuk undangan yang lebih hidup dengan galeri, musik, dan RSVP.</p></div>
           <div class="package-list">
@@ -155,16 +140,16 @@
             <div class="package-item"><b>Signature Plus</b><p><del>Rp320.000</del><strong>Rp229.000</strong></p><ul><li>RSVP lengkap</li><li>Live wishes</li><li>Gallery 12 foto</li></ul></div>
             <div class="package-item"><b>Signature Max</b><p><del>Rp420.000</del><strong>Rp299.000</strong></p><ul><li>Love quote section</li><li>Gift digital</li><li>2x revisi minor</li></ul></div>
           </div>
-          <a class="btn plan-btn" href="#contoh-pro">Lihat Contoh Signature</a>
+          <div class="nested-template"><span>Template termasuk</span><div><b>Golden Motion</b><small>Music, countdown, gallery</small></div><div><b>Olive Editorial</b><small>Modern, rapi, dan interaktif</small></div></div><a class="btn plan-btn" href="#contoh-pro">Lihat Contoh Signature</a>
         </article>
-        <article class="category-card" id="paket-royal">
+        <article class="category-card" id="paket-royal" data-category="royal">
           <div class="category-head"><span>Category 03</span><h3>Royal</h3><p>Untuk tampilan cinematic, premium, dan lengkap seperti website event.</p></div>
           <div class="package-list">
             <div class="package-item"><b>Royal Story</b><p><del>Rp520.000</del><strong>Rp379.000</strong></p><ul><li>Cinematic cover</li><li>Love story timeline</li><li>Dress code</li></ul></div>
             <div class="package-item"><b>Royal Gift</b><p><del>Rp650.000</del><strong>Rp479.000</strong></p><ul><li>Wedding gift lengkap</li><li>VIP RSVP</li><li>Premium gallery</li></ul></div>
             <div class="package-item"><b>Royal Exclusive</b><p><del>Rp850.000</del><strong>Rp649.000</strong></p><ul><li>Layout custom</li><li>Priority support</li><li>3x revisi minor</li></ul></div>
           </div>
-          <a class="btn btn-soft plan-btn" href="#contoh-premium">Lihat Contoh Royal</a>
+          <div class="nested-template"><span>Template termasuk</span><div><b>Royal Cinematic</b><small>Love story + gallery premium</small></div><div><b>Velvet Luxury</b><small>Gift, dress code, VIP layout</small></div></div><a class="btn btn-soft plan-btn" href="#contoh-premium">Lihat Contoh Royal</a>
         </article>
       </div>
     </section>
