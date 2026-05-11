@@ -3,11 +3,14 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 const burger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileNav');
+const menuClose = document.querySelector('[data-menu-close]');
 const mq = window.matchMedia('(max-width: 980px)');
 
 const setMenuState = (isOpen) => {
   burger?.setAttribute('aria-expanded', String(isOpen));
   mobileMenu?.classList.toggle('open', isOpen);
+  mobileMenu?.setAttribute('aria-hidden', String(!isOpen));
+  document.body.classList.toggle('menu-open', isOpen);
 };
 
 if (burger && mobileMenu) {
@@ -17,9 +20,13 @@ if (burger && mobileMenu) {
   });
 
   mobileMenu.addEventListener('click', (event) => {
-    if (event.target instanceof HTMLAnchorElement) {
+    if (event.target === mobileMenu || event.target instanceof HTMLAnchorElement) {
       requestAnimationFrame(() => setMenuState(false));
     }
+  });
+
+  menuClose?.addEventListener('click', () => {
+    requestAnimationFrame(() => setMenuState(false));
   });
 
   mq.addEventListener('change', (event) => {
@@ -89,6 +96,17 @@ const updateDiscountCountdown = () => {
 };
 updateDiscountCountdown();
 setInterval(updateDiscountCountdown, 1000);
+
+
+const categoryTabs = document.querySelectorAll('[data-category-tab]');
+const categoryPanels = document.querySelectorAll('[data-category-panel]');
+categoryTabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    const category = tab.dataset.categoryTab;
+    categoryTabs.forEach((item) => item.classList.toggle('active', item === tab));
+    categoryPanels.forEach((panel) => panel.classList.toggle('active', panel.dataset.categoryPanel === category));
+  });
+});
 
 const revealItems = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window && revealItems.length) {
