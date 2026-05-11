@@ -68,6 +68,28 @@ if (slides.length && dotsWrap) {
   startSlider();
 }
 
+
+const discountCountdown = document.querySelector('[data-discount-countdown]');
+const promoCycleMs = 7 * 24 * 60 * 60 * 1000;
+const promoEpoch = Date.UTC(2026, 0, 1, 0, 0, 0);
+const updateDiscountCountdown = () => {
+  if (!discountCountdown) return;
+  const now = Date.now();
+  const elapsed = ((now - promoEpoch) % promoCycleMs + promoCycleMs) % promoCycleMs;
+  const remaining = promoCycleMs - elapsed;
+  const values = [
+    Math.floor(remaining / 86400000),
+    Math.floor((remaining / 3600000) % 24),
+    Math.floor((remaining / 60000) % 60),
+    Math.floor((remaining / 1000) % 60),
+  ];
+  discountCountdown.querySelectorAll('strong').forEach((item, index) => {
+    item.textContent = String(values[index] ?? 0).padStart(2, '0');
+  });
+};
+updateDiscountCountdown();
+setInterval(updateDiscountCountdown, 1000);
+
 const revealItems = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window && revealItems.length) {
   const io = new IntersectionObserver((entries) => {
