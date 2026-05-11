@@ -8,7 +8,14 @@ const mq = window.matchMedia('(max-width: 980px)');
 
 const setMenuState = (isOpen) => {
   burger?.setAttribute('aria-expanded', String(isOpen));
-  mobileMenu?.classList.toggle('open', isOpen);
+  if (isOpen) {
+    mobileMenu?.classList.remove('closing');
+    mobileMenu?.classList.add('open');
+  } else if (mobileMenu?.classList.contains('open')) {
+    mobileMenu.classList.add('closing');
+    window.setTimeout(() => mobileMenu.classList.remove('closing'), 430);
+    mobileMenu.classList.remove('open');
+  }
   mobileMenu?.setAttribute('aria-hidden', String(!isOpen));
   document.body.classList.toggle('menu-open', isOpen);
 };
@@ -105,6 +112,18 @@ categoryTabs.forEach((tab) => {
     const category = tab.dataset.categoryTab;
     categoryTabs.forEach((item) => item.classList.toggle('active', item === tab));
     categoryPanels.forEach((panel) => panel.classList.toggle('active', panel.dataset.categoryPanel === category));
+  });
+});
+
+
+const accordionButtons = document.querySelectorAll('[data-accordion]');
+accordionButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const item = button.closest('.accordion-item');
+    if (!item) return;
+    const isActive = item.classList.contains('active');
+    document.querySelectorAll('.accordion-item').forEach((entry) => entry.classList.remove('active'));
+    if (!isActive) item.classList.add('active');
   });
 });
 
