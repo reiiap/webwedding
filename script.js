@@ -27,6 +27,46 @@ if (burger && mobileMenu) {
   });
 }
 
+const slides = [...document.querySelectorAll('[data-slide]')];
+const dotsWrap = document.querySelector('[data-slider-dots]');
+let activeSlide = 0;
+let sliderTimer;
+
+const renderSlide = (index) => {
+  if (!slides.length) return;
+  activeSlide = (index + slides.length) % slides.length;
+  slides.forEach((slide, slideIndex) => slide.classList.toggle('active', slideIndex === activeSlide));
+  dotsWrap?.querySelectorAll('button').forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === activeSlide));
+};
+
+const startSlider = () => {
+  if (slides.length < 2) return;
+  clearInterval(sliderTimer);
+  sliderTimer = setInterval(() => renderSlide(activeSlide + 1), 5000);
+};
+
+if (slides.length && dotsWrap) {
+  slides.forEach((_, index) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.setAttribute('aria-label', `Lihat slide ${index + 1}`);
+    dot.addEventListener('click', () => {
+      renderSlide(index);
+      startSlider();
+    });
+    dotsWrap.appendChild(dot);
+  });
+  document.querySelector('[data-slider-prev]')?.addEventListener('click', () => {
+    renderSlide(activeSlide - 1);
+    startSlider();
+  });
+  document.querySelector('[data-slider-next]')?.addEventListener('click', () => {
+    renderSlide(activeSlide + 1);
+    startSlider();
+  });
+  renderSlide(0);
+  startSlider();
+}
 
 const revealItems = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window && revealItems.length) {
@@ -42,18 +82,4 @@ if ('IntersectionObserver' in window && revealItems.length) {
   revealItems.forEach((item) => io.observe(item));
 } else {
   revealItems.forEach((item) => item.classList.add('in-view'));
-}
-
-
-const campaignList = document.getElementById('campaignList');
-if (campaignList) {
-  fetch('/api/marketing')
-    .then((res) => res.json())
-    .then((data) => {
-      const ideas = [...(data.campaignIdeas || []), ...(data.hooks || [])];
-      campaignList.innerHTML = ideas.map((item) => `<li>${item}</li>`).join('');
-    })
-    .catch(() => {
-      campaignList.innerHTML = '<li>Insight sedang diproses. Silakan hubungi admin untuk strategi terbaru.</li>';
-    });
 }

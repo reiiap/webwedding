@@ -1,6 +1,6 @@
-# Web Jualan Undangan Digital
+# Serenara Studio - Web Undangan Digital
 
-Landing page sederhana untuk jualan undangan digital, siap deploy ke Vercel.
+Landing page profesional bertema hitam untuk jasa undangan digital Serenara Studio, lengkap dengan slider hero, paket harga, contoh undangan per plan, dan panduan cara memesan.
 
 ## Jalankan lokal
 
