@@ -272,6 +272,8 @@ body.menu-open { overflow: hidden; }
 .addon-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
 .addon-grid li { display: flex; justify-content: space-between; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); color: var(--muted); }
 .addon-grid li:last-child { border-bottom: 0; }
+.addon-grid p { display: grid; gap: 2px; justify-items: end; margin: 0; white-space: nowrap; }
+.addon-grid del { color: #7f7364; font-size: .9rem; }
 .addon-grid strong { color: var(--text); white-space: nowrap; }
 @media (max-width: 720px) { .addon-grid { grid-template-columns: 1fr; } .order-btn { min-width: 120px; font-size: .82rem; } }
 

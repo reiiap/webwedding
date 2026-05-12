@@ -22,3 +22,6 @@ npx serve .
 ## Preview dummy
 
 Tombol preview pada katalog paket langsung membuka halaman sesuai template, misalnya `/serenara-clean/Bapak-Andi`. Nama tamu dummy diambil dari segmen terakhir URL atau query `?to=Nama%20Tamu`. Paket Basic mencantumkan masa aktif 6 bulan, sedangkan paket Signature dan Royal mencantumkan masa aktif 1 tahun. Masa aktif bisa ditambah per 6 bulan melalui add-on.
+
+
+Harga katalog menampilkan harga awal dicoret dan harga promo sebagai harga yang dipakai untuk tombol pembayaran. Add-on juga memakai format yang sama agar promo terlihat jelas.
