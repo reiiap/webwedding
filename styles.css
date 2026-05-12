@@ -258,3 +258,26 @@ body.menu-open { overflow: hidden; }
   .package-info .nested-template { display: none; }
   .preview-btn { min-width: 120px; padding: 11px 14px; font-size: .86rem; }
 }
+
+
+/* Serenara dark catalog adjustments */
+.category-panel { background: linear-gradient(180deg, #0f0f0f, #050505); color: var(--text); border-color: var(--line); }
+.panel-intro h3 { color: var(--text); }
+.panel-intro p { color: var(--muted); }
+.package-info b { color: var(--primary-2); }
+.package-info del { color: #7f7364; }
+.package-info strong { color: var(--text); }
+.package-info .nested-template { background: rgba(216,168,79,.06); border-color: rgba(216,168,79,.22); color: var(--text); }
+.package-info .nested-template div { background: rgba(255,255,255,.04); border-color: rgba(216,168,79,.18); }
+.phone-preview::before { background: linear-gradient(160deg, #fff 0 28%, #f1eadb 28% 100%); }
+.phone-preview::after { background: linear-gradient(160deg, #fff 0 35%, #ece2d0 35% 100%); }
+.order-btn { display: inline-flex; align-items: center; justify-content: center; min-width: 190px; margin-top: 8px; padding: 12px 18px; border-radius: 12px; border: 1px solid var(--primary); color: var(--primary-2); text-decoration: none; font-weight: 900; text-transform: uppercase; }
+.addon-section { background: #050505; }
+.addon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.addon-grid article { padding: 22px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); }
+.addon-grid h3 { color: var(--primary-2); margin-top: 0; }
+.addon-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.addon-grid li { display: flex; justify-content: space-between; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); color: var(--muted); }
+.addon-grid li:last-child { border-bottom: 0; }
+.addon-grid strong { color: var(--text); white-space: nowrap; }
+@media (max-width: 720px) { .addon-grid { grid-template-columns: 1fr; } .order-btn { min-width: 120px; font-size: .82rem; } }
