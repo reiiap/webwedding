@@ -1,4 +1,15 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/serenara-clean/:guest", "destination": "/serenara-clean/index.html" },
+    { "source": "/classic-noir/:guest", "destination": "/classic-noir/index.html" },
+    { "source": "/soft-ceremony/:guest", "destination": "/soft-ceremony/index.html" },
+    { "source": "/golden-motion/:guest", "destination": "/golden-motion/index.html" },
+    { "source": "/olive-editorial/:guest", "destination": "/olive-editorial/index.html" },
+    { "source": "/midnight-vow/:guest", "destination": "/midnight-vow/index.html" },
+    { "source": "/royal-cinematic/:guest", "destination": "/royal-cinematic/index.html" },
+    { "source": "/velvet-luxury/:guest", "destination": "/velvet-luxury/index.html" },
+    { "source": "/imperial-black/:guest", "destination": "/imperial-black/index.html" }
+  ]
 }
