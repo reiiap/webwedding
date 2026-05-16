@@ -32,8 +32,3 @@ Harga katalog menampilkan harga awal dicoret dan harga promo sebagai harga yang 
 ## SEO Next.js
 
 Project ini memakai Next.js App Router Metadata API untuk title, description, keyword, canonical URL, Open Graph, Twitter Card, `sitemap.xml`, `robots.txt`, dan JSON-LD bisnis/website. Semua halaman katalog, QRIS, dan preview tema dibuat crawlable agar siap deploy ke Vercel dan index Google.
-
-
-## Catatan deploy
-
-Build Vercel dipin ke `next build --webpack` dan `pnpm@10.28.0` agar deploy stabil di Next.js 16. Font Google dimuat lewat `<link>` runtime supaya build tidak bergantung pada fetch font saat compile.
