@@ -4,20 +4,22 @@ Landing page profesional bertema hitam untuk jasa undangan digital Serenara Stud
 
 ## Jalankan lokal
 
-Cukup buka `index.html` langsung di browser, atau pakai server statis:
+Install dependency lalu jalankan Next.js:
 
 ```bash
-npx serve .
+npm install
+npm run dev
 ```
 
 ## Deploy ke Vercel
 
 1. Push repo ini ke GitHub.
 2. Import project di Vercel.
-3. Framework preset: **Other**.
-4. Build command: kosongkan.
-5. Output directory: `.`
-6. Deploy.
+3. Framework preset: **Next.js**.
+4. Build command: `npm run build`.
+5. Output directory: `.next` (default Vercel).
+6. Tambahkan environment variable `NEXT_PUBLIC_SITE_URL` jika domain produksi berbeda dari `https://undangan.serenarastudio.com`.
+7. Deploy.
 
 ## Preview dummy
 
@@ -25,3 +27,8 @@ Tombol preview pada katalog paket langsung membuka halaman sesuai template, misa
 
 
 Harga katalog menampilkan harga awal dicoret dan harga promo sebagai harga yang dipakai untuk tombol pembayaran. Add-on juga memakai format yang sama agar promo terlihat jelas.
+
+
+## SEO Next.js
+
+Project ini memakai Next.js App Router Metadata API untuk title, description, keyword, canonical URL, Open Graph, Twitter Card, `sitemap.xml`, `robots.txt`, dan JSON-LD bisnis/website. Semua halaman katalog, QRIS, dan preview tema dibuat crawlable agar siap deploy ke Vercel dan index Google.
