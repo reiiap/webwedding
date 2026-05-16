@@ -1,6 +1,6 @@
 import Script from 'next/script';
 import { notFound } from 'next/navigation';
-import { readHtmlBody } from '../../../lib/html.js';
+import { readHtmlBody, readTextFile } from '../../../lib/html.js';
 import { buildCanonical, buildMetadata, siteName, siteUrl } from '../../../lib/seo.js';
 import { themeSlugs, themes } from '../../../lib/themes.js';
 
@@ -32,6 +32,7 @@ export default async function ThemePreviewPage({ params }) {
   const guestPath = resolvedParams.guest?.length ? `/${resolvedParams.guest.join('/')}` : '';
   const routePath = `/${resolvedParams.theme}${guestPath}`;
   const html = readHtmlBody(`${resolvedParams.theme}/index.html`);
+  const previewCss = readTextFile('public/shared-preview/preview.css');
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -60,7 +61,7 @@ export default async function ThemePreviewPage({ params }) {
       data-guest="Tamu Undangan"
       data-event-date="2026-12-19T09:00:00+07:00"
     >
-      <link rel="stylesheet" href="/shared-preview/preview.css" />
+      <style dangerouslySetInnerHTML={{ __html: previewCss }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div dangerouslySetInnerHTML={{ __html: html }} />
       <Script src="/shared-preview/preview.js" strategy="afterInteractive" />
