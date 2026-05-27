@@ -2,7 +2,7 @@
   "name": "serenara-studio",
   "version": "1.0.0",
   "private": true,
-  "description": "Serenara Studio — Undangan Digital Online Murah dengan Next.js App Router SEO.",
+  "description": "Serenara Studio \u2014 Undangan Digital Online Murah dengan Next.js App Router SEO.",
   "scripts": {
     "dev": "next dev",
     "build": "next build --webpack",
@@ -15,5 +15,7 @@
   },
   "devDependencies": {},
   "type": "module",
-  "packageManager": "pnpm@10.28.0"
+  "engines": {
+    "node": ">=20.9.0"
+  }
 }
