@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pembayaran QRIS | Serenara Studio</title>
+  <meta name="description" content="Halaman pembayaran QRIS Serenara Studio." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="payment-page">
+  <main class="payment-shell">
+    <a class="payment-back" href="index.html#harga">← Kembali ke Katalog</a>
+    <section class="payment-card">
+      <p class="tagline">Pembayaran Serenara Studio</p>
+      <h1>Scan QRIS lalu konfirmasi ke WhatsApp.</h1>
+      <div class="qris-box" aria-label="Dummy QRIS Serenara Studio"><div class="qris-pattern"></div><strong>QRIS</strong><span>Serenara Studio</span></div>
+      <form class="payment-form" id="paymentForm">
+        <label>Nama Pemesan<input id="buyerName" name="buyerName" type="text" placeholder="Contoh: Andi" required /></label>
+        <label>Paket<input id="packageName" name="packageName" type="text" readonly /></label>
+        <label>Nominal<input id="nominal" name="nominal" type="number" min="1" required /></label>
+        <label>Catatan Tambahan<textarea id="note" name="note" rows="4" placeholder="Contoh: mau tambah WA Blast / custom nama"></textarea></label>
+        <button class="btn" type="submit">Kirim Konfirmasi WhatsApp</button>
+      </form>
+    </section>
+  </main>
+  <script src="qris.js"></script>
+</body>
+</html>
