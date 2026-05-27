@@ -1,0 +1,22 @@
+{
+  "name": "serenara-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Serenara Studio \u2014 Undangan Digital Online Murah dengan Next.js App Router SEO.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build --webpack",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "16.2.6",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {},
+  "type": "module",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "packageManager": "npm@10.9.0"
+}
