@@ -1,11 +1,6 @@
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-const header = document.querySelector("[data-header]");
-const updateHeaderState = () => header?.classList.toggle("scrolled", window.scrollY > 10);
-updateHeaderState();
-window.addEventListener("scroll", updateHeaderState, { passive: true });
-
 const burger = document.getElementById("hamburger");
 const mobileMenu = document.getElementById("mobileNav");
 const menuClose = document.querySelector("[data-menu-close]");
@@ -100,45 +95,24 @@ if (slides.length && dotsWrap) {
   startSlider();
 }
 
-const promoCountdown = document.querySelector("[data-promo-countdown]");
+const discountCountdown = document.querySelector("[data-discount-countdown]");
 const promoCycleMs = 7 * 24 * 60 * 60 * 1000;
 const promoStorageKey = "promo_start";
 
 const getPromoStart = () => {
   const stored = Number(window.localStorage.getItem(promoStorageKey));
   const now = Date.now();
-  if (!Number.isFinite(stored) || stored <= 0 || now - stored > promoCycleMs) {
-    window.localStorage.setItem(promoStorageKey, String(now));
-    return now;
-  }
-  return stored;
-};
-
-let promoStart = promoCountdown ? getPromoStart() : 0;
-let previousPromoValues = [];
-const updatePromoCountdown = () => {
-  if (!promoCountdown) return;
-  const now = Date.now();
-  if (now - promoStart > promoCycleMs) {
-    promoStart = now;
-    window.localStorage.setItem(promoStorageKey, String(promoStart));
-  }
-  const remaining = Math.max(0, promoCycleMs - (now - promoStart));
+  const elapsed =
+    (((now - promoEpoch) % promoCycleMs) + promoCycleMs) % promoCycleMs;
+  const remaining = promoCycleMs - elapsed;
   const values = [
     Math.floor(remaining / 86400000),
     Math.floor((remaining / 3600000) % 24),
     Math.floor((remaining / 60000) % 60),
     Math.floor((remaining / 1000) % 60),
   ];
-  ["days", "hours", "minutes", "seconds"].forEach((unit, index) => {
-    const item = promoCountdown.querySelector(`[data-${unit}]`);
-    if (!item) return;
-    const nextValue = String(values[index] ?? 0).padStart(2, "0");
-    if (item.textContent !== nextValue) {
-      item.textContent = nextValue;
-      item.classList.toggle("tick", previousPromoValues[index] !== values[index]);
-      window.setTimeout(() => item.classList.remove("tick"), 180);
-    }
+  discountCountdown.querySelectorAll("strong").forEach((item, index) => {
+    item.textContent = String(values[index] ?? 0).padStart(2, "0");
   });
   previousPromoValues = values;
 };
@@ -176,10 +150,35 @@ accordionButtons.forEach((button) => {
 });
 
 document
-  .querySelectorAll(".benefit-card, .package-item, .testimonial-card")
+  .querySelectorAll(
+    ".benefit-card, .package-item, .testimonial-card, .portfolio-card, .trust-item",
+  )
   .forEach((item, index) => {
     item.style.setProperty("--stagger", String(index % 4));
   });
+
+const parallaxItem = document.querySelector("[data-parallax]");
+if (
+  parallaxItem &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
+  let ticking = false;
+  const updateParallax = () => {
+    const offset = Math.min(window.scrollY * 0.035, 18);
+    parallaxItem.style.transform = `translate3d(0, ${offset}px, 0)`;
+    ticking = false;
+  };
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    },
+    { passive: true },
+  );
+}
 
 const revealItems = document.querySelectorAll(".reveal");
 if ("IntersectionObserver" in window && revealItems.length) {

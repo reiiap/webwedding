@@ -148,10 +148,35 @@ accordionButtons.forEach((button) => {
 });
 
 document
-  .querySelectorAll(".benefit-card, .package-item, .testimonial-card")
+  .querySelectorAll(
+    ".benefit-card, .package-item, .testimonial-card, .portfolio-card, .trust-item",
+  )
   .forEach((item, index) => {
     item.style.setProperty("--stagger", String(index % 4));
   });
+
+const parallaxItem = document.querySelector("[data-parallax]");
+if (
+  parallaxItem &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
+  let ticking = false;
+  const updateParallax = () => {
+    const offset = Math.min(window.scrollY * 0.035, 18);
+    parallaxItem.style.transform = `translate3d(0, ${offset}px, 0)`;
+    ticking = false;
+  };
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    },
+    { passive: true },
+  );
+}
 
 const revealItems = document.querySelectorAll(".reveal");
 if ("IntersectionObserver" in window && revealItems.length) {
