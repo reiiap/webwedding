@@ -97,9 +97,10 @@ if (slides.length && dotsWrap) {
 
 const discountCountdown = document.querySelector("[data-discount-countdown]");
 const promoCycleMs = 7 * 24 * 60 * 60 * 1000;
-const promoEpoch = Date.UTC(2026, 0, 1, 0, 0, 0);
-const updateDiscountCountdown = () => {
-  if (!discountCountdown) return;
+const promoStorageKey = "promo_start";
+
+const getPromoStart = () => {
+  const stored = Number(window.localStorage.getItem(promoStorageKey));
   const now = Date.now();
   const elapsed =
     (((now - promoEpoch) % promoCycleMs) + promoCycleMs) % promoCycleMs;
@@ -113,9 +114,10 @@ const updateDiscountCountdown = () => {
   discountCountdown.querySelectorAll("strong").forEach((item, index) => {
     item.textContent = String(values[index] ?? 0).padStart(2, "0");
   });
+  previousPromoValues = values;
 };
-updateDiscountCountdown();
-setInterval(updateDiscountCountdown, 1000);
+updatePromoCountdown();
+setInterval(updatePromoCountdown, 1000);
 
 const categoryTabs = document.querySelectorAll("[data-category-tab]");
 const categoryPanels = document.querySelectorAll("[data-category-panel]");
