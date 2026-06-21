@@ -3,7 +3,8 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
-  trailingSlash: false
+  trailingSlash: false,
+  output: "export"
 };
 
 export default nextConfig;
