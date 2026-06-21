@@ -1,3 +1,5 @@
+export const dynamic = "force-static";
+
 import { siteUrl } from '../lib/seo.js';
 import { themeSlugs, themes } from '../lib/themes.js';
 
