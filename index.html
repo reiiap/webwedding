@@ -6,7 +6,7 @@
     <title>Serenara Studio | Undangan Digital Premium</title>
     <meta
       name="description"
-      content="Undangan digital premium yang elegan, emosional, dan dirancang untuk memberi kesan pertama yang tak terlupakan."
+      content="Undangan digital premium untuk pernikahan elegan, modern, dan berkesan. Konsultasi gratis via WhatsApp bersama Serenara Studio."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,561 +17,175 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="header">
-      <div class="container nav">
-        <a class="logo" href="#"
-          ><span class="logo-mark">S</span><span>Serenara Studio</span></a
-        >
-        <nav class="nav-desktop">
-          <a href="#experience">Experience</a><a href="#harga">Paket</a
-          ><a href="#trust">Kenapa Kami</a><a href="#gallery">Preview</a
-          ><a href="#cara-pesan">Cara Pesan</a
-          ><a
-            class="btn btn-sm btn-primary"
-            href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20ingin%20mulai%20membuat%20undangan%20digital%20premium."
-            >Mulai Sekarang</a
-          >
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="#home" aria-label="Serenara Studio">
+          <svg class="brand-mark" viewBox="0 0 72 72" role="img" aria-label="Monogram Serenara">
+            <defs>
+              <linearGradient id="markGold" x1="12" y1="8" x2="60" y2="64" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#fff7e8" />
+                <stop offset="0.52" stop-color="#d9b36c" />
+                <stop offset="1" stop-color="#8f6428" />
+              </linearGradient>
+              <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="2.8" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <circle cx="36" cy="36" r="33" fill="rgba(245,230,211,.08)" stroke="url(#markGold)" stroke-width="1.4" />
+            <path d="M23 46c5.8 7 20 6.1 23.7-1.8 2.4-5.2-1.8-8.4-9.9-10.4-7.1-1.8-9.5-4.3-7.8-8.1 2.2-4.9 11.1-5.4 17.3-.2" fill="none" stroke="#F5E6D3" stroke-width="2.4" stroke-linecap="round" filter="url(#softGlow)" />
+            <path d="M19 53c10-21 23-30 34-33" fill="none" stroke="#d9b36c" stroke-width="1.2" stroke-linecap="round" opacity=".8" />
+          </svg>
+          <svg class="brand-word" viewBox="0 0 276 52" role="img" aria-label="Serenara Studio">
+            <text x="0" y="29" fill="#F5E6D3" font-family="Cormorant Garamond, serif" font-size="30" font-weight="700" letter-spacing="1.8">Serenara</text>
+            <text x="4" y="47" fill="#ffffff" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="700" letter-spacing="4.4">WEDDING STUDIO</text>
+            <path d="M162 18h76" stroke="#cda767" stroke-width="1" opacity=".85" />
+          </svg>
+        </a>
+        <nav class="desktop-nav" aria-label="Navigasi utama">
+          <div class="nav-links">
+            <a href="#demo">Demo</a>
+            <a href="#paket">Paket</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#faq">FAQ</a>
+          </div>
+          <a class="nav-cta" href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20ingin%20konsultasi%20gratis%20untuk%20undangan%20digital%20premium.">Konsultasi Gratis</a>
         </nav>
-        <button
-          id="hamburger"
-          class="hamburger"
-          aria-label="Buka menu"
-          aria-expanded="false"
-          aria-controls="mobileNav"
-        >
+        <button id="hamburger" class="hamburger" aria-label="Buka menu" aria-expanded="false" aria-controls="mobileNav">
           <span></span><span></span><span></span>
         </button>
       </div>
-      <div id="mobileNav" class="nav-overlay" aria-hidden="true">
-        <nav class="nav-panel">
-          <button class="nav-close" data-menu-close aria-label="Tutup menu">
-            ×</button
-          ><a href="#experience">Experience</a><a href="#harga">Paket</a
-          ><a href="#trust">Kenapa Kami</a><a href="#gallery">Preview</a
-          ><a href="#cara-pesan">Cara Pesan</a><a href="#kontak">Contact</a>
-        </nav>
+      <div id="mobileNav" class="mobile-nav" aria-hidden="true">
+        <a href="#demo">Demo</a><a href="#paket">Paket</a><a href="#gallery">Gallery</a><a href="#faq">FAQ</a>
+        <a class="nav-cta" href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20ingin%20konsultasi%20gratis%20untuk%20undangan%20digital%20premium.">Konsultasi Gratis</a>
       </div>
     </header>
 
-    <main>
-      <section class="hero-lux hero-cinematic">
-        <div class="hero-grain" aria-hidden="true"></div>
-        <div class="hero-glow hero-glow-one"></div>
-        <div class="hero-glow hero-glow-two"></div>
-        <div class="container hero-grid">
-          <div class="hero-copy reveal in-view">
-            <p class="tagline">Serenara Studio • Luxury Digital Invitation</p>
-            <h1>Undangan yang tidak hanya dibaca, tapi dirasakan.</h1>
-            <p class="hero-subtitle">
-              Setiap momen berharga dimulai dari kesan pertama. Ciptakan
-              pengalaman digital yang elegan untuk tamu spesial Anda.
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="#gallery">Lihat Demo</a
-              ><a
-                class="btn btn-secondary"
-                href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20ingin%20mulai%20membuat%20undangan%20digital%20premium."
-                >Mulai Sekarang</a
-              ><a
-                class="btn btn-ghost"
-                href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20ingin%20konsultasi%20gratis%20untuk%20undangan%20digital."
-                >Konsultasi Gratis</a
-              >
-            </div>
-            <div class="hero-proof">
-              <span><strong>350+</strong> momen dirancang</span
-              ><span><strong>4.9/5</strong> pengalaman client</span
-              ><span><strong>Support</strong> sampai hari H</span>
-            </div>
+    <main id="home">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="container hero-content reveal in-view">
+          <p class="eyebrow">Luxury Digital Wedding Invitation</p>
+          <h1 id="hero-title">Undangan Digital Premium yang Elegan &amp; Berkesan</h1>
+          <p class="hero-subtitle">Rayakan momen spesial dengan desain modern &amp; eksklusif</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#demo">Lihat Demo</a>
+            <a class="btn btn-glass" href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20ingin%20konsultasi%20gratis%20untuk%20undangan%20digital%20premium.">Konsultasi Gratis via WhatsApp</a>
           </div>
-          <div class="hero-showcase reveal in-view" data-parallax>
-            <div class="preview-card cinematic-card">
-              <div class="preview-ribbon">Signature Experience</div>
-              <img
-                src="/assets/hero-preview.svg"
-                alt="Preview undangan digital premium Serenara Studio"
-                loading="eager"
-              />
-              <div class="preview-note">
-                <span>Dear</span
-                ><strong data-guest-target>Bapak Andi & Family</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="scroll-indicator" aria-hidden="true"></div>
-      </section>
-
-      <section class="section problem-section reveal">
-        <div class="container story-panel story-panel-dark">
-          <p class="tagline">The Problem</p>
-          <h2>Undangan biasa terasa datar dan mudah dilupakan.</h2>
-          <p>
-            Banyak undangan digital hanya menjadi halaman informasi. Padahal,
-            tamu pertama kali merasakan suasana acara dari cara undangan itu
-            dibuka, dibaca, dan diingat.
-          </p>
-          <div class="problem-points">
-            <span>Template terlalu ramai</span
-            ><span>Informasi sulit dibaca</span
-            ><span>Tidak membangun emosi</span>
-          </div>
+          <p class="trust-line">⚡ Respon &lt; 1 Jam | 💬 350+ Client | ⭐ 98% Puas</p>
         </div>
       </section>
 
-      <section class="section solution-section reveal">
-        <div class="container split solution-layout">
-          <div>
-            <p class="tagline">The Serenara Way</p>
-            <h2>Kami menghadirkan pengalaman undangan digital premium.</h2>
-          </div>
-          <div class="solution-copy">
-            <p>
-              Serenara menyusun visual, copywriting, musik, galeri, dan alur
-              informasi menjadi satu pengalaman yang tenang, elegan, dan
-              meyakinkan.
-            </p>
-            <a
-              class="btn btn-primary"
-              href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20ingin%20konsultasi%20konsep%20undangan%20premium."
-              >Konsultasi Konsep</a
-            >
-          </div>
-        </div>
-      </section>
-
-      <section id="gallery" class="section portfolio-section reveal">
+      <section id="demo" class="section demo-section">
         <div class="container">
-          <div class="section-heading centered">
-            <p class="tagline">Signature Portfolio</p>
-            <h2>Preview yang dibuat untuk menjadi pusat perhatian.</h2>
-            <p>
-              Setiap demo dirancang dengan ruang napas, hierarki yang jelas, dan
-              sentuhan visual yang terasa eksklusif sejak halaman pertama.
-            </p>
+          <div class="section-head reveal">
+            <p class="eyebrow">Demo / Preview</p>
+            <h2>Pilih nuansa yang paling terasa seperti kisahmu.</h2>
+            <p>Preview dibuat seperti undangan aktif: elegan dibuka, nyaman dibaca, dan siap dibagikan ke keluarga besar.</p>
           </div>
-          <div class="portfolio-grid">
-            <a
-              class="portfolio-card portfolio-card-large"
-              href="midnight-vow/Tamu-VIP"
-            >
-              <img
-                src="/assets/theme-gold.svg"
-                alt="Preview undangan Aurora dan Raka"
-                loading="lazy"
-              />
-              <span class="portfolio-overlay">
-                <small>Royal Cinematic</small><strong>Aurora & Raka</strong
-                ><em>Lihat Preview</em>
-              </span>
+          <div class="demo-grid">
+            <a class="demo-card reveal" href="midnight-vow/Tamu-VIP">
+              <img src="/assets/theme-gold.svg" alt="Demo Royal Cinematic" loading="lazy" />
+              <span><small>Royal Cinematic</small><strong>Aurora &amp; Raka</strong><em>Lihat Demo</em></span>
             </a>
-            <a class="portfolio-card" href="olive-editorial/Rekan">
-              <img
-                src="/assets/theme-olive.svg"
-                alt="Preview undangan Nadia dan Farhan"
-                loading="lazy"
-              />
-              <span class="portfolio-overlay">
-                <small>Editorial Olive</small><strong>Nadia & Farhan</strong
-                ><em>Lihat Preview</em>
-              </span>
+            <a class="demo-card reveal" href="olive-editorial/Rekan">
+              <img src="/assets/theme-olive.svg" alt="Demo Editorial Olive" loading="lazy" />
+              <span><small>Editorial Olive</small><strong>Nadia &amp; Farhan</strong><em>Lihat Demo</em></span>
             </a>
-            <a class="portfolio-card" href="royal-cinematic/Bapak-Ibu">
-              <img
-                src="/assets/theme-java.svg"
-                alt="Preview undangan Lintang dan Dewa"
-                loading="lazy"
-              />
-              <span class="portfolio-overlay">
-                <small>Modern Heritage</small><strong>Lintang & Dewa</strong
-                ><em>Lihat Preview</em>
-              </span>
+            <a class="demo-card reveal" href="royal-cinematic/Bapak-Ibu">
+              <img src="/assets/theme-java.svg" alt="Demo Modern Heritage" loading="lazy" />
+              <span><small>Modern Heritage</small><strong>Lintang &amp; Dewa</strong><em>Lihat Demo</em></span>
+            </a>
+            <a class="demo-card reveal" href="classic-noir/Sahabat">
+              <img src="/assets/theme-romance.svg" alt="Demo Classic Noir" loading="lazy" />
+              <span><small>Classic Noir</small><strong>Serena &amp; Aditya</strong><em>Lihat Demo</em></span>
             </a>
           </div>
-          <div class="portfolio-cta">
-            <p>
-              Ingin undangan Anda terasa seperti pengalaman premium, bukan
-              template biasa?
-            </p>
-            <a
-              class="btn btn-secondary"
-              href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20tertarik%20dengan%20portfolio%20undangan%20premium."
-              >Mulai Undangan Anda</a
-            >
+        </div>
+      </section>
+
+      <section id="testimoni" class="section proof-section">
+        <div class="container split">
+          <div class="section-head reveal">
+            <p class="eyebrow">Social Proof</p>
+            <h2>Dipercaya pasangan modern dari seluruh Indonesia.</h2>
+            <p class="stats"><strong>500+ Undangan Selesai</strong><span>Client dari seluruh Indonesia</span></p>
+          </div>
+          <div class="chat-stack">
+            <article class="chat-card reveal"><div>⭐⭐⭐⭐⭐</div><p>“Tamu langsung bilang undangannya mewah. Prosesnya rapi, cepat, dan hasilnya jauh lebih elegan dari ekspektasi.”</p><strong>— Anindya, Jakarta</strong></article>
+            <article class="chat-card reveal"><div>⭐⭐⭐⭐⭐</div><p>“Kami suka karena desainnya tidak pasaran. Keluarga mudah akses, RSVP juga praktis untuk acara.”</p><strong>— Raka, Bandung</strong></article>
+            <article class="chat-card reveal"><div>⭐⭐⭐⭐⭐</div><p>“Admin responsif banget. Revisi detail kecil dibantu sampai undangan terasa benar-benar personal.”</p><strong>— Nadia, Surabaya</strong></article>
           </div>
         </div>
       </section>
 
-      <section id="experience" class="section experience-section reveal">
+      <section id="paket" class="section packages-section">
         <div class="container">
-          <div class="section-heading centered">
-            <p class="tagline">Luxury Experience</p>
-            <h2>Fitur yang dirancang untuk membangun suasana.</h2>
-            <p>
-              Bukan daftar teknis. Setiap fitur hadir untuk membuat tamu merasa
-              lebih dekat dengan momen Anda.
-            </p>
+          <div class="section-head centered reveal">
+            <p class="eyebrow">Packages</p>
+            <h2>Paket sederhana, hasil tetap premium.</h2>
+            <p>Variasi tema tersedia di dalam setiap paket, bukan produk terpisah. Pilih level layanan yang paling sesuai dengan kebutuhan acaramu.</p>
           </div>
-          <div class="benefit-grid luxury-benefits">
-            <article class="card benefit-card">
-              <span class="benefit-icon">✦</span>
-              <h3>RSVP Real-time</h3>
-              <p>
-                Permudah tamu mengonfirmasi kehadiran dengan sistem modern yang
-                rapi dan mudah dipantau.
-              </p>
-            </article>
-            <article class="card benefit-card">
-              <span class="benefit-icon">◐</span>
-              <h3>Countdown Eksklusif</h3>
-              <p>
-                Menghadirkan momen yang semakin dekat secara emosional, lembut,
-                dan tidak berlebihan.
-              </p>
-            </article>
-            <article class="card benefit-card">
-              <span class="benefit-icon">♪</span>
-              <h3>Background Music</h3>
-              <p>
-                Ciptakan suasana romantis sejak pertama dibuka, selaras dengan
-                karakter acara Anda.
-              </p>
-            </article>
-            <article class="card benefit-card">
-              <span class="benefit-icon">◈</span>
-              <h3>Galeri Digital</h3>
-              <p>
-                Simpan dan tampilkan kenangan indah dalam satu tempat yang
-                terasa clean, personal, dan elegan.
-              </p>
-            </article>
+          <div class="package-grid">
+            <article class="package-card reveal"><h3>Basic</h3><p class="price">Rp299k</p><ul><li>1 pilihan tema elegan</li><li>Detail acara &amp; maps</li><li>Galeri foto</li><li>Link siap dibagikan</li></ul><a class="btn btn-soft" href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20ingin%20tanya%20paket%20Basic.">Pilih Basic</a></article>
+            <article class="package-card featured reveal"><span class="badge">Best Value</span><h3>Premium</h3><p class="price">Rp499k</p><ul><li>Semua fitur Basic</li><li>RSVP &amp; ucapan tamu</li><li>Musik pilihan</li><li>3x revisi konten</li><li>Prioritas pengerjaan</li></ul><a class="btn btn-primary" href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20tertarik%20paket%20Premium%20Best%20Value.">Ambil Premium</a></article>
+            <article class="package-card reveal"><h3>Luxury</h3><p class="price">Rp899k</p><ul><li>Konsep visual eksklusif</li><li>Copywriting lebih personal</li><li>Layout galeri premium</li><li>Support intensif sampai hari H</li></ul><a class="btn btn-soft" href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20ingin%20konsultasi%20paket%20Luxury.">Konsultasi Luxury</a></article>
           </div>
+          <p class="limited-note reveal">Promo terbatas untuk waktu tertentu — tanyakan slot minggu ini melalui WhatsApp.</p>
         </div>
       </section>
 
-      <section class="section testimonial-section reveal">
+      <section id="gallery" class="section gallery-section">
         <div class="container">
-          <div class="section-heading centered">
-            <p class="tagline">Premium Trust</p>
-            <h2>Dipercaya untuk membuat undangan terasa sangat personal.</h2>
-          </div>
-          <div class="stats-row">
-            <div><strong>350+</strong><span>Project undangan</span></div>
-            <div><strong>98%</strong><span>Client puas</span></div>
-            <div><strong>&lt; 1 jam</strong><span>Rata-rata respon</span></div>
-          </div>
-          <div class="testimonial-grid">
-            <article class="card testimonial-card">
-              <div class="testimonial-top">
-                <span class="avatar">NF</span><span class="stars">★★★★★</span>
-              </div>
-              <p>
-                “Undangan kami terasa sangat spesial. Tamu kami bahkan memuji
-                desainnya sebelum acara dimulai.”
-              </p>
-              <strong>Nadia & Farhan</strong><span>Jakarta</span>
-            </article>
-            <article class="card testimonial-card">
-              <div class="testimonial-top">
-                <span class="avatar">LD</span><span class="stars">★★★★★</span>
-              </div>
-              <p>
-                “Simple, elegan, dan sangat berkesan. QRIS gift tetap terlihat
-                sopan dan alurnya mudah untuk keluarga.”
-              </p>
-              <strong>Lintang & Dewa</strong><span>Bandung</span>
-            </article>
-            <article class="card testimonial-card">
-              <div class="testimonial-top">
-                <span class="avatar">AY</span><span class="stars">★★★★★</span>
-              </div>
-              <p>
-                “Dari konsultasi sampai hari H dibantu terus. Hasil akhirnya
-                clean, soft, dan terasa mahal.”
-              </p>
-              <strong>Amara & Yudha</strong><span>Surabaya</span>
-            </article>
-          </div>
-          <div class="testimonial-cta">
-            <a
-              class="btn btn-primary"
-              href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20ingin%20konsultasi%20sekarang."
-              >Konsultasi Sekarang</a
-            >
+          <div class="section-head reveal"><p class="eyebrow">Gallery</p><h2>Visual premium dengan ruang napas.</h2></div>
+          <div class="gallery-grid">
+            <img src="/assets/hero-preview.svg" alt="Preview undangan premium" loading="lazy" />
+            <img src="/assets/theme-java.svg" alt="Preview undangan heritage" loading="lazy" />
+            <img src="/assets/theme-olive.svg" alt="Preview undangan editorial" loading="lazy" />
+            <img src="/assets/theme-gold.svg" alt="Preview undangan gold" loading="lazy" />
           </div>
         </div>
       </section>
 
-      <section id="harga" class="section container reveal">
-        <div class="section-heading">
-          <p class="tagline">Curated Collection</p>
-          <h2>Pilih paket sesuai karakter acara Anda</h2>
-          <p>
-            Setiap tema dibuat clean, ringan, dan siap dipersonalisasi agar
-            tetap terasa eksklusif.
-          </p>
-        </div>
-        <div class="category-tabs">
-          <button class="category-tab active" data-category-tab="basic">
-            Basic <span>6 Bulan</span></button
-          ><button class="category-tab" data-category-tab="signature">
-            Signature <span>1 Tahun</span></button
-          ><button class="category-tab" data-category-tab="royal">
-            Royal <span>1 Tahun</span>
-          </button>
-        </div>
-        <section class="category-panel active" data-category-panel="basic">
-          <div class="package-grid">
-            <article class="package-item">
-              <div class="phone-preview"></div>
-              <b>Serena Noir</b>
-              <p>
-                Undangan minimalis untuk acara intim yang tetap terasa berkelas.
-              </p>
-              <p><del>Rp150.000</del> <strong>Rp75.000</strong></p>
-              <a class="btn btn-sm" href="serenara-clean/Bapak-Andi">Preview</a>
-            </article>
-            <article class="package-item">
-              <div class="phone-preview"></div>
-              <b>Serena Vow</b>
-              <p>
-                Flow lengkap untuk membagikan detail acara dengan tampilan
-                lembut.
-              </p>
-              <p><del>Rp198.000</del> <strong>Rp99.000</strong></p>
-              <a class="btn btn-sm" href="classic-noir/Ibu-Sari">Preview</a>
-            </article>
-            <article class="package-item">
-              <div class="phone-preview"></div>
-              <b>Serena Minimal</b>
-              <p>
-                Desain putih bersih dengan fokus pada nama pasangan dan
-                informasi inti.
-              </p>
-              <p><del>Rp258.000</del> <strong>Rp129.000</strong></p>
-              <a class="btn btn-sm" href="soft-ceremony/Keluarga-Besar"
-                >Preview</a
-              >
-            </article>
-          </div>
-        </section>
-        <section class="category-panel" data-category-panel="signature">
-          <div class="package-grid">
-            <article class="package-item">
-              <div class="phone-preview"></div>
-              <b>Serena Motion</b>
-              <p>
-                Animasi halus untuk pembukaan yang lebih hidup tanpa terasa
-                berlebihan.
-              </p>
-              <p><del>Rp338.000</del> <strong>Rp169.000</strong></p>
-              <a class="btn btn-sm" href="golden-motion/Sahabat">Preview</a>
-            </article>
-            <article class="package-item featured">
-              <div class="phone-preview"></div>
-              <b>Serena Editorial</b>
-              <p>
-                Look modern editorial untuk pasangan yang ingin tampil clean dan
-                premium.
-              </p>
-              <p><del>Rp458.000</del> <strong>Rp229.000</strong></p>
-              <a class="btn btn-sm btn-primary" href="olive-editorial/Rekan"
-                >Preview</a
-              >
-            </article>
-            <article class="package-item">
-              <div class="phone-preview"></div>
-              <b>Serena Gold</b>
-              <p>
-                Nuansa gold luxury dengan pengalaman tamu yang lebih sinematik.
-              </p>
-              <p><del>Rp598.000</del> <strong>Rp299.000</strong></p>
-              <a class="btn btn-sm" href="midnight-vow/Tamu-VIP">Preview</a>
-            </article>
-          </div>
-        </section>
-        <section class="category-panel" data-category-panel="royal">
-          <div class="package-grid">
-            <article class="package-item">
-              <div class="phone-preview"></div>
-              <b>Serena Royal</b>
-              <p>
-                Komposisi elegan untuk acara besar dengan kebutuhan informasi
-                lengkap.
-              </p>
-              <p><del>Rp758.000</del> <strong>Rp379.000</strong></p>
-              <a class="btn btn-sm" href="royal-cinematic/Bapak-Ibu">Preview</a>
-            </article>
-            <article class="package-item">
-              <div class="phone-preview"></div>
-              <b>Serena Velvet</b>
-              <p>
-                Sentuhan deep luxury untuk undangan yang ingin tampil lebih
-                memorable.
-              </p>
-              <p><del>Rp958.000</del> <strong>Rp479.000</strong></p>
-              <a class="btn btn-sm" href="velvet-luxury/Family">Preview</a>
-            </article>
-            <article class="package-item">
-              <div class="phone-preview"></div>
-              <b>Serena Luxe</b>
-              <p>
-                Paket paling lengkap untuk pengalaman premium dari opening
-                sampai gift.
-              </p>
-              <p><del>Rp1.298.000</del> <strong>Rp649.000</strong></p>
-              <a class="btn btn-sm" href="imperial-black/VIP">Preview</a>
-            </article>
-          </div>
-        </section>
-      </section>
-
-      <section id="trust" class="section trust-section reveal">
-        <div class="container trust-layout">
-          <div class="section-heading">
-            <p class="tagline">Why Serenara</p>
-            <h2>Tenang dari proses desain sampai hari H</h2>
-            <p>
-              Kami menjaga pengalaman Anda tetap mudah: komunikasi cepat, revisi
-              terarah, dan detail undangan yang siap dibagikan.
-            </p>
-            <a
-              class="btn btn-primary"
-              href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20ingin%20cek%20slot%20pembuatan%20undangan."
-              >Cek Slot Pembuatan</a
-            >
-          </div>
-          <div class="trust-grid">
-            <article class="trust-item">
-              <strong>01</strong>
-              <h3>Fast Response</h3>
-              <p>
-                Admin siap membantu memilih tema dan menjawab kebutuhan undangan
-                dengan cepat.
-              </p>
-            </article>
-            <article class="trust-item">
-              <strong>02</strong>
-              <h3>Support sampai hari H</h3>
-              <p>
-                Jika ada perubahan detail acara, kami bantu rapikan agar
-                undangan tetap akurat.
-              </p>
-            </article>
-            <article class="trust-item">
-              <strong>03</strong>
-              <h3>Desain eksklusif</h3>
-              <p>
-                Tampilan dibuat konsisten, premium, dan tidak terasa seperti
-                template gratis.
-              </p>
-            </article>
+      <section id="cara-pesan" class="section steps-section">
+        <div class="container">
+          <div class="section-head centered reveal"><p class="eyebrow">How It Works</p><h2>Tiga langkah menuju undangan yang siap memikat tamu.</h2></div>
+          <div class="steps-grid">
+            <article class="step-card reveal"><span>01</span><h3>Pilih Desain</h3><p>Tentukan nuansa: modern, heritage, cinematic, atau minimal luxury.</p></article>
+            <article class="step-card reveal"><span>02</span><h3>Kirim Data</h3><p>Kirim detail acara, nama tamu, foto, musik, dan catatan personal.</p></article>
+            <article class="step-card reveal"><span>03</span><h3>Undangan Siap</h3><p>Kami rapikan, revisi bila perlu, lalu link siap dibagikan.</p></article>
           </div>
         </div>
       </section>
 
-      <section id="kontak" class="section container reveal">
-        <div class="cta-panel">
-          <p class="tagline">Ready When You Are</p>
-          <h2>Bukan sekadar website undangan, tapi pengalaman premium.</h2>
-          <p>
-            Konsultasikan konsep acara, pilih tema, lalu biarkan Serenara Studio
-            merapikan pengalaman digital untuk tamu Anda.
-          </p>
-          <div class="hero-actions centered-actions">
-            <a
-              class="btn btn-primary"
-              href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20ingin%20mulai%20undangan%20saya."
-              >Mulai Undangan Anda</a
-            ><a
-              class="btn btn-secondary"
-              href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20ingin%20konsultasi%20gratis."
-              >Konsultasi Gratis</a
-            ><a class="btn btn-ghost" href="/qris">Lihat QRIS</a>
-          </div>
-        </div>
-        <div class="split contact-grid">
-          <div class="card">
-            <h3>RSVP yang memudahkan</h3>
-            <p>
-              Konfirmasi kehadiran tertata sehingga Anda lebih mudah
-              memperkirakan kebutuhan acara.
-            </p>
-            <a class="btn btn-sm" href="https://wa.me/6281995452717"
-              >WhatsApp RSVP</a
-            >
-          </div>
-          <div class="card">
-            <h3>Wedding Gift yang sopan</h3>
-            <p>
-              QRIS dan informasi gift tampil rapi, aman, dan tetap selaras
-              dengan estetika undangan.
-            </p>
-            <a class="btn btn-sm btn-soft" href="/qris">Lihat QRIS</a>
+      <section id="faq" class="section faq-section">
+        <div class="container split">
+          <div class="section-head reveal"><p class="eyebrow">FAQ</p><h2>Pertanyaan yang sering ditanyakan.</h2></div>
+          <div class="faq-list">
+            <details class="reveal"><summary>Berapa lama pengerjaan?</summary><p>Umumnya 1–3 hari kerja setelah data lengkap, tergantung paket dan antrean desain.</p></details>
+            <details class="reveal"><summary>Apakah bisa revisi?</summary><p>Bisa. Kami bantu revisi teks, foto, dan detail acara sesuai ketentuan paket.</p></details>
+            <details class="reveal"><summary>Bisa custom desain?</summary><p>Bisa untuk paket Luxury atau request khusus setelah konsultasi konsep.</p></details>
+            <details class="reveal"><summary>Bagaimana pembayaran?</summary><p>Pembayaran dilakukan bertahap: booking slot terlebih dahulu, pelunasan setelah preview disetujui.</p></details>
           </div>
         </div>
       </section>
 
-      <section id="cara-pesan" class="section container reveal">
-        <div class="section-heading centered">
-          <p class="tagline">Simple Process</p>
-          <h2>Cara Memesan & FAQ</h2>
-          <p>
-            Proses dibuat ringkas supaya Anda bisa fokus menyiapkan momen
-            bahagia.
-          </p>
+      <section id="kontak" class="final-cta">
+        <div class="container reveal">
+          <p class="eyebrow">Limited Weekly Slot</p>
+          <h2>Siap Buat Undangan Impianmu?</h2>
+          <p>Konsultasi gratis, tanpa komitmen</p>
+          <a class="btn btn-primary" href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20siap%20buat%20undangan%20impian%20saya.">💬 Chat Sekarang</a>
+          <small>Slot terbatas setiap minggu</small>
         </div>
-        <article class="accordion-item active">
-          <button data-accordion>1. Cara Memesan</button>
-          <div class="accordion-content">
-            <p>
-              Pilih tema, konsultasikan kebutuhan, lakukan pembayaran, lalu
-              konfirmasi ke WhatsApp admin untuk proses personalisasi.
-            </p>
-          </div>
-        </article>
-        <article class="accordion-item">
-          <button data-accordion>2. Kelebihan Serenara Studio</button>
-          <div class="accordion-content">
-            <p>
-              Desain premium, personalisasi tamu, copywriting lembut, dan
-              support cepat sampai detail undangan siap dibagikan.
-            </p>
-          </div>
-        </article>
-        <article class="accordion-item">
-          <button data-accordion>3. Apakah bisa revisi?</button>
-          <div class="accordion-content">
-            <p>
-              Bisa. Revisi diarahkan untuk memastikan nama, waktu, lokasi,
-              galeri, dan detail acara tampil akurat dan rapi.
-            </p>
-          </div>
-        </article>
       </section>
     </main>
-    <button class="music-fab" aria-label="Music">♫</button>
-    <footer class="footer">
-      <div class="container footer-inner">
-        <div>
-          <a class="logo" href="#"
-            ><span class="logo-mark">S</span><span>Serenara Studio</span></a
-          >
-          <p>
-            © <span id="year"></span> Serenara Studio. Undangan digital premium
-            untuk momen yang layak dikenang.
-          </p>
-        </div>
-        <div class="footer-actions">
-          <a
-            class="btn btn-primary"
-            href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20ingin%20mulai%20membuat%20undangan%20digital%20premium."
-            >Mulai Sekarang</a
-          ><a class="btn btn-ghost" href="/qris">QRIS</a
-          ><a class="btn btn-ghost" href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20ingin%20mulai%20membuat%20undangan%20digital%20premium.">Whatsapp</a>
-        </div>
-      </div>
-    </footer>
+
+    <a class="sticky-wa" href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20ingin%20konsultasi%20undangan%20digital%20premium." aria-label="Chat WhatsApp">💬</a>
     <script src="script.js"></script>
   </body>
 </html>
