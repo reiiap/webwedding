@@ -1,6 +1,14 @@
 const burger = document.getElementById("hamburger");
 const mobileNav = document.getElementById("mobileNav");
 
+const header = document.querySelector(".site-header");
+const syncHeaderState = () => {
+  header?.classList.toggle("scrolled", window.scrollY > 12);
+};
+syncHeaderState();
+window.addEventListener("scroll", syncHeaderState, { passive: true });
+
+
 const closeMenu = () => {
   burger?.setAttribute("aria-expanded", "false");
   mobileNav?.setAttribute("aria-hidden", "true");
