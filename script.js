@@ -1,6 +1,11 @@
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+const header = document.querySelector("[data-header]");
+const updateHeaderState = () => header?.classList.toggle("scrolled", window.scrollY > 10);
+updateHeaderState();
+window.addEventListener("scroll", updateHeaderState, { passive: true });
+
 const burger = document.getElementById("hamburger");
 const mobileMenu = document.getElementById("mobileNav");
 const menuClose = document.querySelector("[data-menu-close]");
@@ -95,27 +100,50 @@ if (slides.length && dotsWrap) {
   startSlider();
 }
 
-const discountCountdown = document.querySelector("[data-discount-countdown]");
+const promoCountdown = document.querySelector("[data-promo-countdown]");
 const promoCycleMs = 7 * 24 * 60 * 60 * 1000;
-const promoEpoch = Date.UTC(2026, 0, 1, 0, 0, 0);
-const updateDiscountCountdown = () => {
-  if (!discountCountdown) return;
+const promoStorageKey = "promo_start";
+
+const getPromoStart = () => {
+  const stored = Number(window.localStorage.getItem(promoStorageKey));
   const now = Date.now();
-  const elapsed =
-    (((now - promoEpoch) % promoCycleMs) + promoCycleMs) % promoCycleMs;
-  const remaining = promoCycleMs - elapsed;
+  if (!Number.isFinite(stored) || stored <= 0 || now - stored > promoCycleMs) {
+    window.localStorage.setItem(promoStorageKey, String(now));
+    return now;
+  }
+  return stored;
+};
+
+let promoStart = promoCountdown ? getPromoStart() : 0;
+let previousPromoValues = [];
+const updatePromoCountdown = () => {
+  if (!promoCountdown) return;
+  const now = Date.now();
+  if (now - promoStart > promoCycleMs) {
+    promoStart = now;
+    window.localStorage.setItem(promoStorageKey, String(promoStart));
+  }
+  const remaining = Math.max(0, promoCycleMs - (now - promoStart));
   const values = [
     Math.floor(remaining / 86400000),
     Math.floor((remaining / 3600000) % 24),
     Math.floor((remaining / 60000) % 60),
     Math.floor((remaining / 1000) % 60),
   ];
-  discountCountdown.querySelectorAll("strong").forEach((item, index) => {
-    item.textContent = String(values[index] ?? 0).padStart(2, "0");
+  ["days", "hours", "minutes", "seconds"].forEach((unit, index) => {
+    const item = promoCountdown.querySelector(`[data-${unit}]`);
+    if (!item) return;
+    const nextValue = String(values[index] ?? 0).padStart(2, "0");
+    if (item.textContent !== nextValue) {
+      item.textContent = nextValue;
+      item.classList.toggle("tick", previousPromoValues[index] !== values[index]);
+      window.setTimeout(() => item.classList.remove("tick"), 180);
+    }
   });
+  previousPromoValues = values;
 };
-updateDiscountCountdown();
-setInterval(updateDiscountCountdown, 1000);
+updatePromoCountdown();
+setInterval(updatePromoCountdown, 1000);
 
 const categoryTabs = document.querySelectorAll("[data-category-tab]");
 const categoryPanels = document.querySelectorAll("[data-category-panel]");
