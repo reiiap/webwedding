@@ -1,47 +1,41 @@
-const burger = document.getElementById("hamburger");
-const mobileNav = document.getElementById("mobileNav");
+const navbar = document.querySelector("[data-navbar]");
+const menuButton = document.querySelector("[data-menu-button]");
+const mobileMenu = document.querySelector("[data-mobile-menu]");
 
-const header = document.querySelector(".site-header");
-const syncHeaderState = () => {
-  header?.classList.toggle("scrolled", window.scrollY > 12);
-};
-syncHeaderState();
-window.addEventListener("scroll", syncHeaderState, { passive: true });
-
-
-const closeMenu = () => {
-  burger?.setAttribute("aria-expanded", "false");
-  mobileNav?.setAttribute("aria-hidden", "true");
-  mobileNav?.classList.remove("open");
+const updateNavbar = () => {
+  navbar?.classList.toggle("is-scrolled", window.scrollY > 10);
 };
 
-burger?.addEventListener("click", () => {
-  const isOpen = burger.getAttribute("aria-expanded") === "true";
-  burger.setAttribute("aria-expanded", String(!isOpen));
-  mobileNav?.setAttribute("aria-hidden", String(isOpen));
-  mobileNav?.classList.toggle("open", !isOpen);
+updateNavbar();
+window.addEventListener("scroll", updateNavbar, { passive: true });
+
+menuButton?.addEventListener("click", () => {
+  const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+  menuButton.setAttribute("aria-expanded", String(!isOpen));
+  mobileMenu?.classList.toggle("is-open", !isOpen);
 });
 
-mobileNav?.addEventListener("click", (event) => {
-  if (event.target instanceof HTMLAnchorElement) closeMenu();
+mobileMenu?.addEventListener("click", (event) => {
+  if (event.target instanceof HTMLAnchorElement) {
+    menuButton?.setAttribute("aria-expanded", "false");
+    mobileMenu.classList.remove("is-open");
+  }
 });
 
 const revealItems = document.querySelectorAll(".reveal");
-revealItems.forEach((item, index) => item.style.setProperty("--stagger", index % 4));
-
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("in-view");
+          entry.target.classList.add("is-visible");
           observer.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.14, rootMargin: "0px 0px -32px 0px" },
+    { threshold: 0.12, rootMargin: "0px 0px -36px 0px" },
   );
   revealItems.forEach((item) => observer.observe(item));
 } else {
-  revealItems.forEach((item) => item.classList.add("in-view"));
+  revealItems.forEach((item) => item.classList.add("is-visible"));
 }
