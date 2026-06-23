@@ -62,15 +62,22 @@
         left: 0;
         width: 100%;
         z-index: 9999;
-        background: var(--gray-glass);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        transition: background 280ms var(--ease), box-shadow 280ms var(--ease);
+        background: transparent;
+        backdrop-filter: blur(0);
+        -webkit-backdrop-filter: blur(0);
+        border-bottom: 1px solid transparent;
+        transition:
+          background 280ms var(--ease),
+          backdrop-filter 280ms var(--ease),
+          border-color 280ms var(--ease),
+          box-shadow 280ms var(--ease);
       }
 
       .navbar.is-scrolled {
-        background: rgba(15, 15, 15, 0.7);
+        background: rgba(15, 15, 15, 0.8);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border-bottom-color: rgba(255, 255, 255, 0.08);
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.16);
       }
 
@@ -840,12 +847,24 @@
       const menuButton = document.querySelector("[data-menu-button]");
       const mobileMenu = document.querySelector("[data-mobile-menu]");
 
+      const closeMobileMenu = () => {
+        menuButton?.setAttribute("aria-expanded", "false");
+        mobileMenu?.classList.remove("is-open");
+      };
+
       const updateNavbar = () => {
-        navbar?.classList.toggle("is-scrolled", window.scrollY > 10);
+        const hero = document.querySelector(".hero");
+        const navbarHeight = navbar?.offsetHeight ?? 0;
+        const heroBottom = hero
+          ? hero.getBoundingClientRect().bottom + window.scrollY
+          : 0;
+        const shouldBlur = window.scrollY >= Math.max(heroBottom - navbarHeight, 10);
+        navbar?.classList.toggle("is-scrolled", shouldBlur);
       };
 
       updateNavbar();
       window.addEventListener("scroll", updateNavbar, { passive: true });
+      window.addEventListener("resize", updateNavbar);
 
       menuButton?.addEventListener("click", () => {
         const isOpen = menuButton.getAttribute("aria-expanded") === "true";
@@ -855,9 +874,12 @@
 
       mobileMenu?.addEventListener("click", (event) => {
         if (event.target instanceof HTMLAnchorElement) {
-          menuButton?.setAttribute("aria-expanded", "false");
-          mobileMenu.classList.remove("is-open");
+          closeMobileMenu();
         }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMobileMenu();
       });
 
       const revealItems = document.querySelectorAll(".reveal");
