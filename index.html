@@ -15,7 +15,7 @@
         --black: #0f0f0f;
         --cream: #f5e6d3;
         --white: #ffffff;
-        --gray-glass: rgba(30, 30, 30, 0.8);
+        --gray-glass: rgba(30, 30, 30, 0.5);
         --gold: #c9a46a;
         --muted: #8e8174;
         --soft: #fff8ef;
@@ -70,8 +70,8 @@
       }
 
       .navbar.is-scrolled {
-        background: rgba(15, 15, 15, 0.92);
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        background: rgba(15, 15, 15, 0.7);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.16);
       }
 
       .nav-inner {
@@ -85,8 +85,8 @@
       .brand {
         display: flex;
         align-items: center;
-        width: 140px;
-        max-width: 140px;
+        width: 160px;
+        max-width: 160px;
         min-width: 0;
         overflow: hidden;
         text-decoration: none;
@@ -95,8 +95,8 @@
       .brand-logo {
         display: block;
         width: auto;
-        max-width: 140px;
-        height: 40px;
+        max-width: 160px;
+        height: 44px;
         object-fit: contain;
       }
 
@@ -186,7 +186,7 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, rgba(15, 15, 15, 0.42), rgba(15, 15, 15, 0.92)), linear-gradient(90deg, rgba(15, 15, 15, 0.74), rgba(15, 15, 15, 0.38), rgba(15, 15, 15, 0.74));
+        background: linear-gradient(180deg, rgba(15, 15, 15, 0.18), rgba(15, 15, 15, 0.5)), linear-gradient(90deg, rgba(15, 15, 15, 0.5), rgba(15, 15, 15, 0.18), rgba(15, 15, 15, 0.5));
       }
 
       .hero-content {
@@ -218,7 +218,9 @@
 
       h1 {
         font-size: clamp(3rem, 8vw, 7.2rem);
+        color: #ffffff;
         text-wrap: balance;
+        text-shadow: 0 10px 36px rgba(0, 0, 0, 0.5), 0 0 18px rgba(245, 230, 211, 0.18);
       }
 
       h2 {
@@ -235,7 +237,7 @@
       .hero-subtitle {
         max-width: 640px;
         margin: 24px auto 0;
-        color: rgba(255, 255, 255, 0.82);
+        color: rgba(255, 255, 255, 0.94);
         font-size: clamp(1.05rem, 2vw, 1.32rem);
       }
 
@@ -266,8 +268,9 @@
       }
 
       .trust-text {
-        color: var(--cream);
-        font-weight: 800;
+        color: #ffffff;
+        font-weight: 900;
+        text-shadow: 0 6px 22px rgba(0, 0, 0, 0.55);
       }
 
       .section {
@@ -556,12 +559,12 @@
         }
 
         .brand-logo {
-          height: 32px;
-          max-width: 140px;
+          height: 36px;
+          max-width: 160px;
         }
 
         .nav-menu,
-        .navbar > .container > .nav-cta {
+        .nav-inner > .nav-cta {
           display: none;
         }
 
@@ -571,15 +574,16 @@
 
         .mobile-menu {
           position: fixed;
+          z-index: 10000;
           top: 78px;
           left: 20px;
           right: 20px;
           display: grid;
           gap: 14px;
           padding: 20px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.16);
           border-radius: 24px;
-          background: rgba(30, 30, 30, 0.94);
+          background: rgba(30, 30, 30, 0.5);
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
           color: var(--white);
