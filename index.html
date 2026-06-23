@@ -387,6 +387,157 @@
         color: rgba(255, 255, 255, 0.68);
       }
 
+      .testimonial-slider {
+        position: relative;
+        overflow: hidden;
+        cursor: grab;
+        touch-action: pan-y;
+      }
+
+      .testimonial-slider.is-dragging {
+        cursor: grabbing;
+      }
+
+      .testimonial-track {
+        display: flex;
+        gap: 20px;
+        transition: transform 520ms var(--ease);
+        will-change: transform;
+      }
+
+      .testimonial-slider.is-dragging .testimonial-track {
+        transition: none;
+      }
+
+      .chat-card {
+        flex: 0 0 calc((100% - 40px) / 3);
+        border-radius: 24px 24px 24px 6px;
+        padding: 24px;
+        background: #fffaf1;
+        color: var(--black);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+      }
+
+      .customer-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .customer-avatar {
+        width: 48px;
+        height: 48px;
+        flex: 0 0 48px;
+        overflow: hidden;
+        border-radius: 50%;
+        border: 2px solid rgba(201, 164, 106, 0.45);
+        background: var(--cream);
+      }
+
+      .customer-row b,
+      .customer-row small {
+        display: block;
+      }
+
+      .customer-row small {
+        color: #74685d;
+        font-weight: 700;
+      }
+
+      .testimonial-controls {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .slider-btn {
+        width: 46px;
+        height: 46px;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--white);
+        cursor: pointer;
+        font-size: 1.25rem;
+        font-weight: 900;
+        transition: transform 220ms var(--ease), background 220ms var(--ease);
+      }
+
+      .slider-btn:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.18);
+      }
+
+      .discount-countdown {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 24px;
+        align-items: center;
+        margin-bottom: 34px;
+        padding: 28px;
+        border: 1px solid rgba(201, 164, 106, 0.32);
+        border-radius: 30px;
+        background: linear-gradient(135deg, #171717, #2a2119);
+        color: var(--white);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .discount-countdown::before {
+        content: "";
+        position: absolute;
+        inset: -45% auto auto -12%;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        background: rgba(201, 164, 106, 0.2);
+        filter: blur(8px);
+      }
+
+      .discount-countdown > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .discount-countdown h3 {
+        color: var(--white);
+      }
+
+      .discount-countdown p {
+        margin-top: 10px;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .countdown-boxes {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      .countdown-boxes span {
+        display: grid;
+        place-items: center;
+        min-height: 76px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--gold);
+        font-size: 1.55rem;
+        font-weight: 900;
+      }
+
+      .countdown-boxes small {
+        display: block;
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
       .testimonial-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -445,10 +596,30 @@
       }
 
       .price {
-        margin: 14px 0;
+        margin: 14px 0 4px;
         color: var(--gold);
         font-size: 2.2rem;
         font-weight: 900;
+      }
+
+      .price-original {
+        color: var(--muted);
+        font-size: 1rem;
+        font-weight: 800;
+        text-decoration: line-through;
+      }
+
+      .discount-note {
+        margin: 0 0 18px;
+        color: #7a5a27;
+        font-size: 0.9rem;
+        font-weight: 900;
+      }
+
+      .package-card .btn-secondary {
+        color: var(--white);
+        border-color: var(--black);
+        background: var(--black);
       }
 
       .package-card ul {
@@ -631,6 +802,14 @@
           grid-template-columns: 1fr;
         }
 
+        .chat-card {
+          flex-basis: 100%;
+        }
+
+        .discount-countdown {
+          grid-template-columns: 1fr;
+        }
+
         .package-card.featured {
           transform: none;
         }
@@ -670,6 +849,10 @@
 
         .trust-text {
           font-size: 0.9rem;
+        }
+
+        .countdown-boxes {
+          grid-template-columns: repeat(2, 1fr);
         }
       }
 
@@ -756,10 +939,23 @@
             <h2>Dipercaya pasangan dari berbagai kota di Indonesia.</h2>
             <p>Komunikasi rapi, revisi jelas, dan hasil akhir siap dibagikan dengan percaya diri.</p>
           </div>
-          <div class="testimonial-grid">
-            <article class="chat-card reveal"><strong>⭐⭐⭐⭐⭐</strong><p>“Tamu keluarga langsung komentar undangannya mewah dan mudah dibuka. Hasilnya persis seperti mood acara kami.”</p><b>— Anindya, Jakarta</b></article>
-            <article class="chat-card reveal"><strong>⭐⭐⭐⭐⭐</strong><p>“Desainnya clean, tidak ramai, tapi tetap terasa premium. Admin juga responsif saat kami minta revisi detail nama.”</p><b>— Raka, Bandung</b></article>
-            <article class="chat-card reveal"><strong>⭐⭐⭐⭐⭐</strong><p>“Link undangan terlihat profesional. Orang tua kami pun mudah membagikannya ke kerabat besar.”</p><b>— Nadia, Surabaya</b></article>
+          <div class="testimonial-slider reveal" data-testimonial-slider>
+            <div class="testimonial-track" data-testimonial-track>
+              <article class="chat-card"><strong>⭐⭐⭐⭐⭐</strong><p>“Tamu keluarga langsung komentar undangannya mewah dan mudah dibuka. Hasilnya persis seperti mood acara kami.”</p><div class="customer-row"><img class="customer-avatar" src="/assets/customer-1.svg" alt="Foto customer Anindya" loading="lazy" /><span><b>Anindya</b><small>Jakarta</small></span></div></article>
+              <article class="chat-card"><strong>⭐⭐⭐⭐⭐</strong><p>“Desainnya clean, tidak ramai, tapi tetap terasa premium. Admin juga responsif saat kami minta revisi detail nama.”</p><div class="customer-row"><img class="customer-avatar" src="/assets/customer-2.svg" alt="Foto customer Raka" loading="lazy" /><span><b>Raka</b><small>Bandung</small></span></div></article>
+              <article class="chat-card"><strong>⭐⭐⭐⭐⭐</strong><p>“Link undangan terlihat profesional. Orang tua kami pun mudah membagikannya ke kerabat besar.”</p><div class="customer-row"><img class="customer-avatar" src="/assets/customer-3.svg" alt="Foto customer Nadia" loading="lazy" /><span><b>Nadia</b><small>Surabaya</small></span></div></article>
+              <article class="chat-card"><strong>⭐⭐⭐⭐⭐</strong><p>“Prosesnya sat-set, preview cepat dikirim, dan revisi warna dibuat sesuai konsep dekorasi kami.”</p><div class="customer-row"><img class="customer-avatar" src="/assets/customer-4.svg" alt="Foto customer Dimas" loading="lazy" /><span><b>Dimas</b><small>Yogyakarta</small></span></div></article>
+              <article class="chat-card"><strong>⭐⭐⭐⭐⭐</strong><p>“Undangannya ringan dibuka di HP keluarga. Fitur maps bikin tamu gampang cari venue.”</p><div class="customer-row"><img class="customer-avatar" src="/assets/customer-5.svg" alt="Foto customer Laras" loading="lazy" /><span><b>Laras</b><small>Semarang</small></span></div></article>
+              <article class="chat-card"><strong>⭐⭐⭐⭐⭐</strong><p>“Template terlihat mahal, tapi tetap simple. Cocok banget buat acara intimate kami.”</p><div class="customer-row"><img class="customer-avatar" src="/assets/customer-6.svg" alt="Foto customer Bagas" loading="lazy" /><span><b>Bagas</b><small>Malang</small></span></div></article>
+              <article class="chat-card"><strong>⭐⭐⭐⭐⭐</strong><p>“Admin bantu susun kalimat undangan biar lebih formal untuk keluarga besar. Hasilnya rapi.”</p><div class="customer-row"><img class="customer-avatar" src="/assets/customer-7.svg" alt="Foto customer Kirana" loading="lazy" /><span><b>Kirana</b><small>Medan</small></span></div></article>
+              <article class="chat-card"><strong>⭐⭐⭐⭐⭐</strong><p>“Kami suka karena tampilannya tidak pasaran. Link mudah dibagikan ke grup kantor.”</p><div class="customer-row"><img class="customer-avatar" src="/assets/customer-8.svg" alt="Foto customer Reza" loading="lazy" /><span><b>Reza</b><small>Makassar</small></span></div></article>
+              <article class="chat-card"><strong>⭐⭐⭐⭐⭐</strong><p>“Galeri fotonya elegan dan RSVP membantu kami cek estimasi tamu sebelum acara.”</p><div class="customer-row"><img class="customer-avatar" src="/assets/customer-9.svg" alt="Foto customer Ayu" loading="lazy" /><span><b>Ayu</b><small>Denpasar</small></span></div></article>
+              <article class="chat-card"><strong>⭐⭐⭐⭐⭐</strong><p>“Rekomendasi banget. Dari briefing sampai publish, semuanya jelas dan tidak ribet.”</p><div class="customer-row"><img class="customer-avatar" src="/assets/customer-10.svg" alt="Foto customer Fajar" loading="lazy" /><span><b>Fajar</b><small>Bekasi</small></span></div></article>
+            </div>
+            <div class="testimonial-controls" aria-label="Kontrol testimonial">
+              <button class="slider-btn" type="button" data-testimonial-prev aria-label="Testimonial sebelumnya">‹</button>
+              <button class="slider-btn" type="button" data-testimonial-next aria-label="Testimonial berikutnya">›</button>
+            </div>
           </div>
         </div>
       </section>
@@ -771,23 +967,36 @@
             <h2>Pilih paket yang paling sesuai dengan rencana acaramu.</h2>
             <p>Semua paket sudah termasuk link undangan yang siap dibagikan dan tampilan mobile yang nyaman.</p>
           </div>
+          <div class="discount-countdown reveal" data-discount-countdown>
+            <div>
+              <p class="eyebrow">Flash Deal Terbatas</p>
+              <h3>Harga promo bisa berakhir dalam hitungan hari.</h3>
+              <p>Booking sekarang untuk mengunci diskon spesial sebelum slot promo periode ini habis.</p>
+            </div>
+            <div class="countdown-boxes" aria-label="Countdown flash deal terbatas">
+              <span><b data-countdown-days>00</b><small>Hari</small></span>
+              <span><b data-countdown-hours>00</b><small>Jam</small></span>
+              <span><b data-countdown-minutes>00</b><small>Menit</small></span>
+              <span><b data-countdown-seconds>00</b><small>Detik</small></span>
+            </div>
+          </div>
           <div class="package-grid">
             <article class="package-card reveal">
               <h3>Basic</h3>
-              <p class="price">Rp299k</p>
+              <p class="price">Rp75k</p><p class="price-original">Rp299k</p><p class="discount-note">Diskon spesial Basic</p>
               <ul><li>1 tema premium</li><li>Detail acara &amp; lokasi</li><li>Galeri foto</li><li>Link siap dibagikan</li></ul>
               <a class="btn btn-secondary" href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20ingin%20tanya%20paket%20Basic.">Tanya Basic</a>
             </article>
             <article class="package-card featured reveal">
               <span class="badge">Best Value</span>
               <h3>Premium</h3>
-              <p class="price">Rp499k</p>
+              <p class="price">Rp199k</p><p class="price-original">Rp499k</p><p class="discount-note">Hemat 300K</p>
               <ul><li>Semua fitur Basic</li><li>RSVP &amp; ucapan tamu</li><li>Musik pilihan</li><li>3x revisi konten</li></ul>
               <a class="btn btn-primary" href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20tertarik%20paket%20Premium.">Ambil Premium</a>
             </article>
             <article class="package-card reveal">
               <h3>Luxury</h3>
-              <p class="price">Rp899k</p>
+              <p class="price">Rp399k</p><p class="price-original">Rp899k</p><p class="discount-note">Hemat 500K</p>
               <ul><li>Konsep visual eksklusif</li><li>Copywriting lebih personal</li><li>Layout galeri premium</li><li>Support sampai hari H</li></ul>
               <a class="btn btn-secondary" href="https://wa.me/6281995452717?text=Halo%20Serenara%20Studio%2C%20saya%20ingin%20konsultasi%20paket%20Luxury.">Konsultasi Luxury</a>
             </article>

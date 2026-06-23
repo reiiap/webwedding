@@ -54,3 +54,120 @@ if ("IntersectionObserver" in window) {
 } else {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
+
+const testimonialSlider = document.querySelector("[data-testimonial-slider]");
+const testimonialTrack = document.querySelector("[data-testimonial-track]");
+const testimonialPrev = document.querySelector("[data-testimonial-prev]");
+const testimonialNext = document.querySelector("[data-testimonial-next]");
+
+if (testimonialSlider && testimonialTrack) {
+  const cards = Array.from(testimonialTrack.children);
+  let activeIndex = 0;
+  let autoSlideTimer;
+  let startX = 0;
+  let currentX = 0;
+  let isDragging = false;
+
+  const getVisibleCards = () => (window.matchMedia("(max-width: 920px)").matches ? 1 : 3);
+  const getMaxIndex = () => Math.max(cards.length - getVisibleCards(), 0);
+  const getOffset = (index) => cards[index]?.offsetLeft ?? 0;
+
+  const updateTestimonials = (dragOffset = 0) => {
+    activeIndex = Math.min(Math.max(activeIndex, 0), getMaxIndex());
+    testimonialTrack.style.transform = `translateX(${dragOffset - getOffset(activeIndex)}px)`;
+  };
+
+  const goToTestimonial = (direction) => {
+    const maxIndex = getMaxIndex();
+    activeIndex += direction;
+    if (activeIndex > maxIndex) activeIndex = 0;
+    if (activeIndex < 0) activeIndex = maxIndex;
+    updateTestimonials();
+  };
+
+  const startAutoSlide = () => {
+    window.clearInterval(autoSlideTimer);
+    autoSlideTimer = window.setInterval(() => goToTestimonial(1), 3600);
+  };
+
+  const stopAutoSlide = () => window.clearInterval(autoSlideTimer);
+
+  const endDrag = () => {
+    if (!isDragging) return;
+    const diff = currentX - startX;
+    testimonialSlider.classList.remove("is-dragging");
+    isDragging = false;
+
+    if (Math.abs(diff) > 48) {
+      goToTestimonial(diff < 0 ? 1 : -1);
+    } else {
+      updateTestimonials();
+    }
+    startAutoSlide();
+  };
+
+  testimonialPrev?.addEventListener("click", () => {
+    goToTestimonial(-1);
+    startAutoSlide();
+  });
+
+  testimonialNext?.addEventListener("click", () => {
+    goToTestimonial(1);
+    startAutoSlide();
+  });
+
+  testimonialSlider.addEventListener("pointerdown", (event) => {
+    startX = event.clientX;
+    currentX = event.clientX;
+    isDragging = true;
+    testimonialSlider.classList.add("is-dragging");
+    testimonialSlider.setPointerCapture?.(event.pointerId);
+    stopAutoSlide();
+  });
+
+  testimonialSlider.addEventListener("pointermove", (event) => {
+    if (!isDragging) return;
+    currentX = event.clientX;
+    updateTestimonials(currentX - startX);
+  });
+
+  testimonialSlider.addEventListener("pointerup", endDrag);
+  testimonialSlider.addEventListener("pointercancel", endDrag);
+  testimonialSlider.addEventListener("pointerleave", endDrag);
+  testimonialSlider.addEventListener("mouseenter", stopAutoSlide);
+  testimonialSlider.addEventListener("mouseleave", () => {
+    if (!isDragging) startAutoSlide();
+  });
+  window.addEventListener("resize", () => updateTestimonials());
+  updateTestimonials();
+  startAutoSlide();
+}
+
+const countdown = document.querySelector("[data-discount-countdown]");
+if (countdown) {
+  const cycleMs = 7 * 24 * 60 * 60 * 1000;
+  const baseTime = Date.UTC(2026, 0, 1, 0, 0, 0);
+  const daysEl = countdown.querySelector("[data-countdown-days]");
+  const hoursEl = countdown.querySelector("[data-countdown-hours]");
+  const minutesEl = countdown.querySelector("[data-countdown-minutes]");
+  const secondsEl = countdown.querySelector("[data-countdown-seconds]");
+  const pad = (value) => String(value).padStart(2, "0");
+
+  const updateCountdown = () => {
+    const elapsed = Date.now() - baseTime;
+    const remaining = cycleMs - (elapsed % cycleMs || cycleMs);
+    const totalSeconds = Math.floor(remaining / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    if (daysEl) daysEl.textContent = pad(days);
+    if (hoursEl) hoursEl.textContent = pad(hours);
+    if (minutesEl) minutesEl.textContent = pad(minutes);
+    if (secondsEl) secondsEl.textContent = pad(seconds);
+  };
+
+  updateCountdown();
+  window.setInterval(updateCountdown, 1000);
+}
