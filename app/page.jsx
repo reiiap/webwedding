@@ -43,6 +43,7 @@ const pageJsonLd = {
 export default function HomePage() {
   return (
     <>
+      <link rel="stylesheet" href="/styles.css" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageJsonLd) }}
