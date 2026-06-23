@@ -2,12 +2,24 @@ const navbar = document.querySelector("[data-navbar]");
 const menuButton = document.querySelector("[data-menu-button]");
 const mobileMenu = document.querySelector("[data-mobile-menu]");
 
+const closeMobileMenu = () => {
+  menuButton?.setAttribute("aria-expanded", "false");
+  mobileMenu?.classList.remove("is-open");
+};
+
 const updateNavbar = () => {
-  navbar?.classList.toggle("is-scrolled", window.scrollY > 10);
+  const hero = document.querySelector(".hero");
+  const navbarHeight = navbar?.offsetHeight ?? 0;
+  const heroBottom = hero
+    ? hero.getBoundingClientRect().bottom + window.scrollY
+    : 0;
+  const shouldBlur = window.scrollY >= Math.max(heroBottom - navbarHeight, 10);
+  navbar?.classList.toggle("is-scrolled", shouldBlur);
 };
 
 updateNavbar();
 window.addEventListener("scroll", updateNavbar, { passive: true });
+window.addEventListener("resize", updateNavbar);
 
 menuButton?.addEventListener("click", () => {
   const isOpen = menuButton.getAttribute("aria-expanded") === "true";
@@ -17,9 +29,12 @@ menuButton?.addEventListener("click", () => {
 
 mobileMenu?.addEventListener("click", (event) => {
   if (event.target instanceof HTMLAnchorElement) {
-    menuButton?.setAttribute("aria-expanded", "false");
-    mobileMenu.classList.remove("is-open");
+    closeMobileMenu();
   }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeMobileMenu();
 });
 
 const revealItems = document.querySelectorAll(".reveal");
