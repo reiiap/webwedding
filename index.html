@@ -390,6 +390,12 @@
       .testimonial-slider {
         position: relative;
         overflow: hidden;
+        cursor: grab;
+        touch-action: pan-y;
+      }
+
+      .testimonial-slider.is-dragging {
+        cursor: grabbing;
       }
 
       .testimonial-track {
@@ -397,6 +403,10 @@
         gap: 20px;
         transition: transform 520ms var(--ease);
         will-change: transform;
+      }
+
+      .testimonial-slider.is-dragging .testimonial-track {
+        transition: none;
       }
 
       .chat-card {
@@ -461,6 +471,7 @@
       }
 
       .discount-countdown {
+        position: relative;
         display: grid;
         grid-template-columns: 1.15fr 0.85fr;
         gap: 24px;
@@ -472,6 +483,23 @@
         background: linear-gradient(135deg, #171717, #2a2119);
         color: var(--white);
         box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .discount-countdown::before {
+        content: "";
+        position: absolute;
+        inset: -45% auto auto -12%;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        background: rgba(201, 164, 106, 0.2);
+        filter: blur(8px);
+      }
+
+      .discount-countdown > * {
+        position: relative;
+        z-index: 1;
       }
 
       .discount-countdown h3 {
@@ -941,11 +969,11 @@
           </div>
           <div class="discount-countdown reveal" data-discount-countdown>
             <div>
-              <p class="eyebrow">Diskon Mingguan</p>
-              <h3>Promo reset otomatis tiap 7 hari.</h3>
-              <p>Amankan harga hemat sebelum countdown balik lagi ke periode promo berikutnya.</p>
+              <p class="eyebrow">Flash Deal Terbatas</p>
+              <h3>Harga promo bisa berakhir dalam hitungan hari.</h3>
+              <p>Booking sekarang untuk mengunci diskon spesial sebelum slot promo periode ini habis.</p>
             </div>
-            <div class="countdown-boxes" aria-label="Countdown diskon 7 hari">
+            <div class="countdown-boxes" aria-label="Countdown flash deal terbatas">
               <span><b data-countdown-days>00</b><small>Hari</small></span>
               <span><b data-countdown-hours>00</b><small>Jam</small></span>
               <span><b data-countdown-minutes>00</b><small>Menit</small></span>

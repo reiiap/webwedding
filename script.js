@@ -64,21 +64,22 @@ if (testimonialSlider && testimonialTrack) {
   const cards = Array.from(testimonialTrack.children);
   let activeIndex = 0;
   let autoSlideTimer;
+  let startX = 0;
+  let currentX = 0;
+  let isDragging = false;
 
   const getVisibleCards = () => (window.matchMedia("(max-width: 920px)").matches ? 1 : 3);
   const getMaxIndex = () => Math.max(cards.length - getVisibleCards(), 0);
+  const getOffset = (index) => cards[index]?.offsetLeft ?? 0;
 
-  const updateTestimonials = () => {
-    activeIndex = Math.min(activeIndex, getMaxIndex());
-    const firstCard = cards[0];
-    const gap = Number.parseFloat(getComputedStyle(testimonialTrack).gap) || 0;
-    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width + gap : 0;
-    testimonialTrack.style.transform = `translateX(-${activeIndex * cardWidth}px)`;
+  const updateTestimonials = (dragOffset = 0) => {
+    activeIndex = Math.min(Math.max(activeIndex, 0), getMaxIndex());
+    testimonialTrack.style.transform = `translateX(${dragOffset - getOffset(activeIndex)}px)`;
   };
 
   const goToTestimonial = (direction) => {
     const maxIndex = getMaxIndex();
-    activeIndex = activeIndex + direction;
+    activeIndex += direction;
     if (activeIndex > maxIndex) activeIndex = 0;
     if (activeIndex < 0) activeIndex = maxIndex;
     updateTestimonials();
@@ -86,7 +87,23 @@ if (testimonialSlider && testimonialTrack) {
 
   const startAutoSlide = () => {
     window.clearInterval(autoSlideTimer);
-    autoSlideTimer = window.setInterval(() => goToTestimonial(1), 4200);
+    autoSlideTimer = window.setInterval(() => goToTestimonial(1), 3600);
+  };
+
+  const stopAutoSlide = () => window.clearInterval(autoSlideTimer);
+
+  const endDrag = () => {
+    if (!isDragging) return;
+    const diff = currentX - startX;
+    testimonialSlider.classList.remove("is-dragging");
+    isDragging = false;
+
+    if (Math.abs(diff) > 48) {
+      goToTestimonial(diff < 0 ? 1 : -1);
+    } else {
+      updateTestimonials();
+    }
+    startAutoSlide();
   };
 
   testimonialPrev?.addEventListener("click", () => {
@@ -99,9 +116,29 @@ if (testimonialSlider && testimonialTrack) {
     startAutoSlide();
   });
 
-  testimonialSlider.addEventListener("mouseenter", () => window.clearInterval(autoSlideTimer));
-  testimonialSlider.addEventListener("mouseleave", startAutoSlide);
-  window.addEventListener("resize", updateTestimonials);
+  testimonialSlider.addEventListener("pointerdown", (event) => {
+    startX = event.clientX;
+    currentX = event.clientX;
+    isDragging = true;
+    testimonialSlider.classList.add("is-dragging");
+    testimonialSlider.setPointerCapture?.(event.pointerId);
+    stopAutoSlide();
+  });
+
+  testimonialSlider.addEventListener("pointermove", (event) => {
+    if (!isDragging) return;
+    currentX = event.clientX;
+    updateTestimonials(currentX - startX);
+  });
+
+  testimonialSlider.addEventListener("pointerup", endDrag);
+  testimonialSlider.addEventListener("pointercancel", endDrag);
+  testimonialSlider.addEventListener("pointerleave", endDrag);
+  testimonialSlider.addEventListener("mouseenter", stopAutoSlide);
+  testimonialSlider.addEventListener("mouseleave", () => {
+    if (!isDragging) startAutoSlide();
+  });
+  window.addEventListener("resize", () => updateTestimonials());
   updateTestimonials();
   startAutoSlide();
 }
