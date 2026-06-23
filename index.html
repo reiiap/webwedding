@@ -85,25 +85,19 @@
       .brand {
         display: flex;
         align-items: center;
-        gap: 10px;
         width: 140px;
         max-width: 140px;
         min-width: 0;
         overflow: hidden;
         text-decoration: none;
-        color: var(--white);
       }
 
-      .brand-icon {
+      .brand-logo {
+        display: block;
         width: auto;
+        max-width: 140px;
         height: 40px;
-        flex: 0 0 auto;
-      }
-
-      .brand-wordmark {
-        width: auto;
-        height: 32px;
-        min-width: 0;
+        object-fit: contain;
       }
 
       .nav-menu {
@@ -561,12 +555,9 @@
           min-height: 68px;
         }
 
-        .brand-icon {
+        .brand-logo {
           height: 32px;
-        }
-
-        .brand-wordmark {
-          height: 28px;
+          max-width: 140px;
         }
 
         .nav-menu,
@@ -674,15 +665,7 @@
     <header class="navbar" data-navbar>
       <div class="container nav-inner">
         <a class="brand" href="#home" aria-label="Serenara Studio">
-          <svg class="brand-icon" viewBox="0 0 48 48" role="img" aria-label="Monogram Serenara">
-            <circle cx="24" cy="24" r="22" fill="rgba(245,230,211,0.08)" stroke="#F5E6D3" stroke-width="1.2" />
-            <path d="M16 31c4.4 4.6 13.7 4 16.2-1.3 1.7-3.6-1.3-5.6-6.8-7-5-1.2-6.5-2.9-5.3-5.4 1.5-3.2 7.7-3.5 11.9-.2" fill="none" stroke="#F5E6D3" stroke-width="2" stroke-linecap="round" />
-            <path d="M13 36c6.8-13.7 15.5-19.7 24-22" fill="none" stroke="#C9A46A" stroke-width="1.2" stroke-linecap="round" />
-          </svg>
-          <svg class="brand-wordmark" viewBox="0 0 130 42" role="img" aria-label="Serenara Studio">
-            <text x="0" y="22" fill="#F5E6D3" font-family="Cormorant Garamond, Georgia, serif" font-size="23" font-weight="700">Serenara</text>
-            <text x="2" y="38" fill="#FFFFFF" font-family="Plus Jakarta Sans, Arial, sans-serif" font-size="7" font-weight="800" letter-spacing="2.4">STUDIO</text>
-          </svg>
+          <img class="brand-logo" src="/assets/logo.svg" alt="Serenara Studio" />
         </a>
 
         <nav class="nav-menu" aria-label="Navigasi utama">
