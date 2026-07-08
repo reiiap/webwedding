@@ -303,6 +303,27 @@
         object-position: center;
       }
 
+      .hero-footer {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        background: var(--black);
+      }
+
+      .hero-footer .container {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+      }
+
+      .hero-footer img {
+        width: 100%;
+        min-height: 10px;
+        height: 52vw;
+        max-height: 920px;
+        object-fit: cover;
+        object-position: center;
+      }
 
       .btn-primary {
         color: var(--black);
@@ -915,6 +936,12 @@
           object-fit:cover;
         }
 
+        .hero-footer img {
+          min-height: 220px;
+          height: auto;
+          object-fit: cover;
+        }
+
         .hero-actions .btn,
         .final-cta .btn {
           width: 100px;
@@ -992,6 +1019,12 @@
       <section class="hero-about-us">
         <div class="container">
           <img src="/assets/about-us.webp" alt="About Us">
+        </div>
+      </section>
+
+      <section class="hero-footer">
+        <div class="container">
+          <img src="/assets/hero-footer.webp" alt="Hero Footer">
         </div>
       </section>
       
