@@ -310,6 +310,20 @@
         background: var(--black);
       }
 
+      .hero-footer::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+
+        background: linear-gradient(
+    to top,
+          rgba(0, 0, 0, 0) 55%,
+          rgba(0, 0, 0, 1) 100%
+        );
+      }
+
       .hero-footer .container {
         width: 100%;
         max-width: none;
